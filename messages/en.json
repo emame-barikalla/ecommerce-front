@@ -1,0 +1,436 @@
+{
+  "a11y": {
+    "skipToContent": "Skip to main content"
+  },
+  "nav": {
+    "home": "Home",
+    "catalog": "Shop",
+    "whyUs": "Why Us",
+    "about": "About",
+    "contact": "Contact",
+    "cart": "Cart",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "search": "Search",
+    "language": "Language",
+    "primary": "Main navigation",
+    "breadcrumb": "Breadcrumb",
+    "brandName": "España a Mauritania",
+    "closeMenu": "Close menu",
+    "categories": "Categories",
+    "information": "Information"
+  },
+  "announcement": {
+    "whatsapp": "Order and get support directly on WhatsApp",
+    "authentic": "100% authentic products, sourced in Spain",
+    "dismiss": "Dismiss announcement",
+    "freeDelivery": "Free delivery on orders over {amount}",
+    "delivery": "Delivery across Mauritania in {min}–{max} days"
+  },
+  "home": {
+    "hero": {
+      "badge": "Premium Spanish Collection",
+      "title": "Spanish quality, delivered to Mauritania",
+      "subtitle": "A considered selection of skincare, bags and shoes — sourced in Spain, delivered to your door.",
+      "cta": "Shop the collection",
+      "learnMore": "Why choose us"
+    },
+    "benefits": {
+      "title": "Why shop with us"
+    },
+    "categories": {
+      "eyebrow": "Browse",
+      "title": "Shop by category",
+      "viewAll": "View all",
+      "shopNow": "Shop now"
+    },
+    "bestSellers": {
+      "eyebrow": "Selected",
+      "title": "Featured products",
+      "viewAll": "View all",
+      "emptyTitle": "Nothing here yet",
+      "emptyDescription": "New products are added regularly — check back soon."
+    },
+    "newArrivals": {
+      "eyebrow": "Just in",
+      "title": "New arrivals",
+      "viewAll": "View all"
+    },
+    "promo": {
+      "badge": "New collection",
+      "title": "The season's edit",
+      "description": "Fresh skincare, bags, shoes and makeup — chosen for quality, not for volume.",
+      "cta": "Discover"
+    },
+    "newsletter": {
+      "title": "Stay updated",
+      "description": "New arrivals and occasional offers. No noise.",
+      "placeholder": "Your email address",
+      "button": "Subscribe",
+      "submitting": "Subscribing…",
+      "success": "Thank you for subscribing.",
+      "error": "Please enter a valid email address."
+    }
+  },
+  "catalog": {
+    "title": "Shop",
+    "subtitle": "Discover our products",
+    "resultsFor": "Results for “{query}”",
+    "filter": "Category",
+    "filters": "Filters",
+    "all": "All products",
+    "sort": "Sort by",
+    "sortFeatured": "Featured",
+    "sortNewest": "Newest",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low",
+    "sortName": "Name A–Z",
+    "showResults": "Show {count, plural, one {# product} other {# products}}",
+    "productCount": "{count, plural, one {# product} other {# products}}",
+    "loading": "Loading…",
+    "searchPlaceholder": "Search products",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "browseAll": "Browse all products",
+    "noProducts": "No products yet",
+    "noProductsDescription": "Our catalog is being updated. Please check back soon.",
+    "noResultsTitle": "No products found",
+    "noResultsDescription": "Try a different search or clear your filters.",
+    "errorTitle": "Something went wrong",
+    "errorDescription": "We couldn't load the products. Please try again.",
+    "retry": "Try again",
+    "addToCart": "Add to cart",
+    "added": "Added",
+    "addedToCart": "Added to cart",
+    "badgeNew": "New",
+    "quantity": "Quantity",
+    "increase": "Increase quantity",
+    "decrease": "Decrease quantity",
+    "total": "Total",
+    "askWhatsApp": "Ask on WhatsApp",
+    "deliveryEstimate": "Delivery {min}–{max} days from Spain",
+    "relatedProducts": "You may also like",
+    "viewAll": "View all",
+    "galleryLabel": "Product images",
+    "viewImage": "View image {number}",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "availability": {
+      "in_stock": "In stock",
+      "low_stock": "Only a few left",
+      "on_order": "Available to order",
+      "out_of_stock": "Out of stock"
+    },
+    "badgeSale": "−{percent}%",
+    "productWhatsApp": "Hello! I am interested in this product: {name}\n{url}"
+  },
+  "cart": {
+    "title": "Your cart",
+    "open": "Open cart",
+    "openWithCount": "Open cart, {count, plural, one {# item} other {# items}}",
+    "empty": "Your cart is empty",
+    "emptyHint": "Discover products selected in Spain.",
+    "continueShopping": "Continue shopping",
+    "clear": "Clear",
+    "remove": "Remove",
+    "increase": "Increase quantity",
+    "decrease": "Decrease quantity",
+    "subtotal": "Subtotal ({count, plural, one {# item} other {# items}})",
+    "total": "Total",
+    "deliveryEstimate": "Estimated delivery {min}–{max} days from Spain.",
+    "checkoutHint": "Review your order, then send it to us on WhatsApp.",
+    "checkout": "Checkout",
+    "close": "Close cart",
+    "unavailable": "No longer available",
+    "priceChanged": "Price updated",
+    "clearTitle": "Empty your cart?",
+    "clearDescription": "All products will be removed from your cart.",
+    "clearConfirm": "Empty cart"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": {
+      "authentic": {
+        "question": "Are your products authentic?",
+        "answer": "Every product is sourced in Spain, and we guarantee it is genuine."
+      },
+      "delivery": {
+        "question": "How long does delivery take?",
+        "answerWithDays": "Delivery usually takes {min}–{max} days from Spain to Mauritania. We confirm the exact timing on WhatsApp.",
+        "answer": "We confirm the delivery time for your city on WhatsApp when you order."
+      },
+      "payment": {
+        "question": "How do I pay?",
+        "answer": "Payment is agreed with you on WhatsApp when we confirm your order."
+      },
+      "returns": {
+        "question": "What is your return policy?",
+        "answer": "You can return damaged or incorrect items within {days} days. Contact us on WhatsApp to start a return."
+      },
+      "whatsapp": {
+        "question": "Why order via WhatsApp?",
+        "answer": "WhatsApp lets you ask questions, see more photos, confirm details, and get personal service in your language."
+      }
+    }
+  },
+  "whatsapp": {
+    "contactUs": "Contact us on WhatsApp",
+    "chatWithUs": "Chat with us",
+    "defaultMessage": "Hello! I'm interested in your products.",
+    "openWhatsApp": "Open WhatsApp",
+    "instantResponse": "The fastest way to reach us."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Get in touch",
+    "subtitle": "Questions about a product, an order, or delivery? We're here.",
+    "name": "Your name",
+    "namePlaceholder": "Full name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "message": "Your message",
+    "messagePlaceholder": "How can we help?",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Message sent. We'll get back to you shortly.",
+    "error": "Couldn't send your message. Please try WhatsApp instead.",
+    "whatsapp": "WhatsApp"
+  },
+  "about": {
+    "eyebrow": "Our story",
+    "title": "About us",
+    "description": "We connect Spanish quality with Mauritanian customers, delivering premium products with care and reliability.",
+    "story": {
+      "title": "Where it started",
+      "paragraph1": "We started with a simple idea: make products we love in Spain easy to buy in Mauritania. Our selection covers skincare, bags, shoes and beauty, chosen one product at a time.",
+      "paragraph2": "We understand the importance of trust in online shopping, which is why we offer personal WhatsApp communication — so you can ask questions, see additional photos, and feel confident before making a purchase."
+    },
+    "highlights": {
+      "sourcing": "Sourced directly in Spain",
+      "shipping": "Delivery across Mauritania",
+      "support": "WhatsApp customer support",
+      "authentic": "Authentic brand guarantee"
+    },
+    "valuesTitle": "What drives us",
+    "mission": {
+      "title": "Our mission",
+      "description": "To provide authentic Spanish products with exceptional service and reliable delivery."
+    },
+    "values": {
+      "title": "Our values",
+      "description": "Quality, authenticity, customer service, and building lasting relationships."
+    },
+    "promise": {
+      "title": "Our promise",
+      "description": "Every product is carefully selected and delivered with care and attention."
+    },
+    "journey": {
+      "title": "Join our journey",
+      "description": "We're constantly expanding our range and improving our service. Follow along and be first to know about new arrivals.",
+      "browseCatalog": "Browse the catalog",
+      "getInTouch": "Get in touch"
+    }
+  },
+  "whyChooseUs": {
+    "eyebrow": "Why us",
+    "subtitle": "How we work, and what you can count on.",
+    "features": {
+      "premiumQuality": {
+        "title": "Selected in Spain",
+        "description": "Every product in the catalog is chosen in Spain for its quality."
+      },
+      "support": {
+        "title": "Personal support",
+        "description": "Ask questions, request more photos and confirm details on WhatsApp before you buy."
+      }
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "steps": {
+        "browse": {
+          "title": "Browse",
+          "description": "Explore our catalog."
+        },
+        "contact": {
+          "title": "Contact",
+          "description": "Reach us on WhatsApp."
+        },
+        "confirm": {
+          "title": "Confirm",
+          "description": "Discuss details and price."
+        },
+        "receive": {
+          "title": "Receive",
+          "description": "Get your products."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to experience Spanish quality?",
+      "description": "Browse our catalog and find your products today.",
+      "button": "Explore the catalog"
+    },
+    "promisesTitle": "What you can count on"
+  },
+  "footer": {
+    "tagline": "Skincare, bags, shoes and beauty selected in Spain, delivered across Mauritania.",
+    "location": "Nouakchott, Mauritania",
+    "whatsappSupport": "WhatsApp support",
+    "whatsappGreeting": "Hello! I have a question.",
+    "allProducts": "All products",
+    "help": "Help",
+    "trackOrder": "Track order",
+    "followInstagram": "Follow us on Instagram",
+    "followFacebook": "Follow us on Facebook",
+    "rights": "All rights reserved.",
+    "language": "Language",
+    "followTiktok": "Follow us on TikTok"
+  },
+  "orders": {
+    "eyebrow": "Orders",
+    "trackTitle": "Track your order",
+    "trackDescription": "Enter the order reference from your WhatsApp confirmation.",
+    "orderRef": "Order reference",
+    "track": "Look up",
+    "invalidRef": "That doesn't look like a valid reference. It looks like ORD-XXXXX-XXXX.",
+    "checkOnWhatsApp": "Orders are confirmed and updated on WhatsApp. Send us this reference and we'll tell you exactly where it is.",
+    "askStatus": "Ask for a status update",
+    "whatsappMessage": "Hello! Could you tell me the status of my order {ref}?",
+    "lostRef": "Lost your reference? <link>Contact us</link> and we'll find it.",
+    "status": {
+      "received": "Order received",
+      "packed": "Being packed",
+      "shipped": "Shipped",
+      "delivered": "Delivered"
+    }
+  },
+  "notFound": {
+    "title": "This page doesn't exist",
+    "description": "The page you're looking for may have been moved or removed.",
+    "goHome": "Go to homepage",
+    "browseCatalog": "Browse the catalog"
+  },
+  "wishlist": {
+    "add": "Add to wishlist",
+    "remove": "Remove from wishlist"
+  },
+  "recentlyViewed": {
+    "title": "Recently viewed"
+  },
+  "common": {
+    "close": "Close",
+    "cancel": "Cancel"
+  },
+  "trust": {
+    "whatsapp": {
+      "title": "Order on WhatsApp",
+      "desc": "Ask questions and confirm every detail before you buy."
+    },
+    "delivery": {
+      "title": "Delivery across Mauritania",
+      "desc": "{min}–{max} days from Spain to your door."
+    },
+    "deliveryConfirmed": {
+      "title": "Delivery across Mauritania",
+      "desc": "Delivery time confirmed with you on WhatsApp."
+    },
+    "freeDelivery": {
+      "title": "Free delivery",
+      "desc": "On orders over {amount}."
+    },
+    "returns": {
+      "title": "Returns",
+      "desc": "Returns accepted within {days} days — details on WhatsApp."
+    },
+    "authentic": {
+      "title": "Authentic products",
+      "desc": "Genuine products, sourced in Spain."
+    }
+  },
+  "stats": {
+    "customers": "{count, plural, one {customer served} other {customers served}}",
+    "orders": "{count, plural, one {order delivered} other {orders delivered}}",
+    "title": "In numbers"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "metaDescription": "Review your order and send it on WhatsApp.",
+    "steps": {
+      "review": "Review",
+      "details": "Details",
+      "confirm": "Confirm"
+    },
+    "progress": "Checkout progress",
+    "stepOf": "Step {current} of {total}",
+    "reviewTitle": "Review your order",
+    "detailsTitle": "Your details",
+    "detailsHint": "We use these only to confirm and deliver your order.",
+    "confirmTitle": "Confirm and send",
+    "empty": "Your cart is empty",
+    "emptyHint": "Add products to your cart to place an order.",
+    "continueShopping": "Continue shopping",
+    "back": "Back",
+    "continue": "Continue",
+    "edit": "Edit",
+    "remove": "Remove",
+    "checking": "Checking prices and availability…",
+    "unavailableNotice": "Some products are no longer available. They are not included in your order.",
+    "priceNotice": "Some prices changed since you added them. The totals shown are up to date.",
+    "checkFailed": "We couldn’t check the latest prices and availability.",
+    "retry": "Try again",
+    "nothingOrderable": "None of the products in your cart are available right now.",
+    "fields": {
+      "name": "Full name",
+      "phone": "Phone number",
+      "phoneHint": "We’ll contact you on this number to confirm.",
+      "city": "City",
+      "address": "Address",
+      "addressHint": "Neighbourhood, street, landmark",
+      "note": "Note",
+      "notePlaceholder": "Anything we should know? (optional)"
+    },
+    "errors": {
+      "required": "This field is required.",
+      "phone": "Enter a valid phone number."
+    },
+    "summary": {
+      "title": "Order summary",
+      "subtotal": "Subtotal",
+      "delivery": "Delivery",
+      "deliveryConfirmed": "Confirmed on WhatsApp",
+      "deliveryFree": "Free",
+      "total": "Total",
+      "deliverTo": "Deliver to",
+      "items": "{count, plural, one {# item} other {# items}}"
+    },
+    "sendNotice": "Your order is sent to our team as a WhatsApp message. It is confirmed once we reply — payment and delivery are agreed in the conversation.",
+    "send": "Send order on WhatsApp",
+    "whatsappMissingTitle": "Ordering is temporarily unavailable",
+    "whatsappMissingDescription": "Please contact us through the contact page and we’ll take your order.",
+    "contactUs": "Contact us",
+    "sentTitle": "Finish on WhatsApp",
+    "sentDescription": "WhatsApp opened with your order. Press send there — we’ll confirm your order in the conversation.",
+    "orderRef": "Order reference",
+    "sentConfirm": "I’ve sent the message",
+    "reopen": "Open WhatsApp again",
+    "doneTitle": "Thank you",
+    "doneDescription": "We’ll reply on WhatsApp to confirm your order. Keep your reference: {ref}.",
+    "trackOrder": "Track your order",
+    "message": {
+      "greeting": "Hello! I would like to place an order.",
+      "ref": "Order reference: {ref}",
+      "items": "Products:",
+      "line": "• {name} × {quantity} — {total}",
+      "subtotal": "Subtotal: {amount}",
+      "deliveryFree": "Delivery: free",
+      "deliveryPending": "Delivery: to be confirmed",
+      "customer": "My details:",
+      "name": "Name: {value}",
+      "phone": "Phone: {value}",
+      "city": "City: {value}",
+      "address": "Address: {value}",
+      "note": "Note: {value}",
+      "closing": "Thank you!"
+    }
+  }
+}

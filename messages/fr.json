@@ -1,0 +1,436 @@
+{
+  "a11y": {
+    "skipToContent": "Aller au contenu principal"
+  },
+  "nav": {
+    "home": "Accueil",
+    "catalog": "Boutique",
+    "whyUs": "Pourquoi nous",
+    "about": "À propos",
+    "contact": "Contact",
+    "cart": "Panier",
+    "menu": "Menu",
+    "openMenu": "Ouvrir le menu",
+    "search": "Rechercher",
+    "language": "Langue",
+    "primary": "Navigation principale",
+    "breadcrumb": "Fil d'Ariane",
+    "brandName": "España a Mauritania",
+    "closeMenu": "Fermer le menu",
+    "categories": "Catégories",
+    "information": "Informations"
+  },
+  "announcement": {
+    "whatsapp": "Commandez et posez vos questions directement sur WhatsApp",
+    "authentic": "Produits 100 % authentiques, sourcés en Espagne",
+    "dismiss": "Fermer l'annonce",
+    "freeDelivery": "Livraison gratuite dès {amount} d’achat",
+    "delivery": "Livraison partout en Mauritanie en {min} à {max} jours"
+  },
+  "home": {
+    "hero": {
+      "badge": "Collection espagnole premium",
+      "title": "La qualité espagnole, livrée en Mauritanie",
+      "subtitle": "Une sélection réfléchie de soins, sacs et chaussures — sourcés en Espagne, livrés chez vous.",
+      "cta": "Découvrir la collection",
+      "learnMore": "Pourquoi nous choisir"
+    },
+    "benefits": {
+      "title": "Pourquoi acheter chez nous"
+    },
+    "categories": {
+      "eyebrow": "Explorer",
+      "title": "Acheter par catégorie",
+      "viewAll": "Tout voir",
+      "shopNow": "Découvrir"
+    },
+    "bestSellers": {
+      "eyebrow": "Sélection",
+      "title": "Produits en vedette",
+      "viewAll": "Tout voir",
+      "emptyTitle": "Rien pour le moment",
+      "emptyDescription": "De nouveaux produits arrivent régulièrement — revenez bientôt."
+    },
+    "newArrivals": {
+      "eyebrow": "Nouveautés",
+      "title": "Nouvel arrivage",
+      "viewAll": "Tout voir"
+    },
+    "promo": {
+      "badge": "Nouvelle collection",
+      "title": "La sélection de la saison",
+      "description": "Soins, sacs, chaussures et maquillage — choisis pour leur qualité, pas pour leur quantité.",
+      "cta": "Découvrir"
+    },
+    "newsletter": {
+      "title": "Restez informé",
+      "description": "Nouveautés et offres occasionnelles. Rien de plus.",
+      "placeholder": "Votre adresse e-mail",
+      "button": "S'inscrire",
+      "submitting": "Inscription…",
+      "success": "Merci pour votre inscription.",
+      "error": "Veuillez saisir une adresse e-mail valide."
+    }
+  },
+  "catalog": {
+    "title": "Boutique",
+    "subtitle": "Découvrez nos produits",
+    "resultsFor": "Résultats pour « {query} »",
+    "filter": "Catégorie",
+    "filters": "Filtres",
+    "all": "Tous les produits",
+    "sort": "Trier par",
+    "sortFeatured": "En vedette",
+    "sortNewest": "Plus récents",
+    "sortPriceAsc": "Prix : croissant",
+    "sortPriceDesc": "Prix : décroissant",
+    "sortName": "Nom A–Z",
+    "showResults": "Voir {count, plural, one {# produit} other {# produits}}",
+    "productCount": "{count, plural, one {# produit} other {# produits}}",
+    "loading": "Chargement…",
+    "searchPlaceholder": "Rechercher un produit",
+    "clearSearch": "Effacer la recherche",
+    "clearFilters": "Effacer les filtres",
+    "browseAll": "Voir tous les produits",
+    "noProducts": "Aucun produit pour l'instant",
+    "noProductsDescription": "Notre catalogue est en cours de mise à jour. Revenez bientôt.",
+    "noResultsTitle": "Aucun produit trouvé",
+    "noResultsDescription": "Essayez une autre recherche ou effacez vos filtres.",
+    "errorTitle": "Une erreur est survenue",
+    "errorDescription": "Impossible de charger les produits. Veuillez réessayer.",
+    "retry": "Réessayer",
+    "addToCart": "Ajouter au panier",
+    "added": "Ajouté",
+    "addedToCart": "Ajouté au panier",
+    "badgeNew": "Nouveau",
+    "quantity": "Quantité",
+    "increase": "Augmenter la quantité",
+    "decrease": "Diminuer la quantité",
+    "total": "Total",
+    "askWhatsApp": "Demander sur WhatsApp",
+    "deliveryEstimate": "Livraison {min}–{max} jours depuis l'Espagne",
+    "relatedProducts": "Vous aimerez aussi",
+    "viewAll": "Tout voir",
+    "galleryLabel": "Images du produit",
+    "viewImage": "Voir l'image {number}",
+    "previousImage": "Image précédente",
+    "nextImage": "Image suivante",
+    "availability": {
+      "in_stock": "En stock",
+      "low_stock": "Plus que quelques pièces",
+      "on_order": "Disponible sur commande",
+      "out_of_stock": "Rupture de stock"
+    },
+    "badgeSale": "−{percent} %",
+    "productWhatsApp": "Bonjour ! Ce produit m’intéresse : {name}\n{url}"
+  },
+  "cart": {
+    "title": "Votre panier",
+    "open": "Ouvrir le panier",
+    "openWithCount": "Ouvrir le panier, {count, plural, one {# article} other {# articles}}",
+    "empty": "Votre panier est vide",
+    "emptyHint": "Découvrez nos produits sélectionnés en Espagne.",
+    "continueShopping": "Continuer mes achats",
+    "clear": "Vider",
+    "remove": "Retirer",
+    "increase": "Augmenter la quantité",
+    "decrease": "Diminuer la quantité",
+    "subtotal": "Sous-total ({count, plural, one {# article} other {# articles}})",
+    "total": "Total",
+    "deliveryEstimate": "Livraison estimée {min}–{max} jours depuis l'Espagne.",
+    "checkoutHint": "Vérifiez votre commande, puis envoyez-la-nous sur WhatsApp.",
+    "checkout": "Passer la commande",
+    "close": "Fermer le panier",
+    "unavailable": "N’est plus disponible",
+    "priceChanged": "Prix mis à jour",
+    "clearTitle": "Vider votre panier ?",
+    "clearDescription": "Tous les produits seront retirés de votre panier.",
+    "clearConfirm": "Vider le panier"
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": {
+      "authentic": {
+        "question": "Vos produits sont-ils authentiques ?",
+        "answer": "Chaque produit est acheté en Espagne, et nous garantissons son authenticité."
+      },
+      "delivery": {
+        "question": "Combien de temps prend la livraison ?",
+        "answerWithDays": "La livraison prend généralement {min} à {max} jours depuis l’Espagne jusqu’en Mauritanie. Nous confirmons le délai exact sur WhatsApp.",
+        "answer": "Nous confirmons le délai de livraison pour votre ville sur WhatsApp au moment de la commande."
+      },
+      "payment": {
+        "question": "Comment puis-je payer ?",
+        "answer": "Le mode de paiement est convenu avec vous sur WhatsApp lorsque nous confirmons votre commande."
+      },
+      "returns": {
+        "question": "Quelle est votre politique de retour ?",
+        "answer": "Vous pouvez retourner un article endommagé ou erroné sous {days} jours. Contactez-nous sur WhatsApp pour lancer un retour."
+      },
+      "whatsapp": {
+        "question": "Pourquoi commander sur WhatsApp ?",
+        "answer": "WhatsApp vous permet de poser vos questions, voir plus de photos, confirmer les détails et bénéficier d'un service personnalisé dans votre langue."
+      }
+    }
+  },
+  "whatsapp": {
+    "contactUs": "Nous contacter sur WhatsApp",
+    "chatWithUs": "Discutons",
+    "defaultMessage": "Bonjour ! Je suis intéressé(e) par vos produits.",
+    "openWhatsApp": "Ouvrir WhatsApp",
+    "instantResponse": "Le moyen le plus rapide de nous joindre."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Nous contacter",
+    "subtitle": "Une question sur un produit, une commande ou la livraison ? Nous sommes là.",
+    "name": "Votre nom",
+    "namePlaceholder": "Nom complet",
+    "email": "E-mail",
+    "emailPlaceholder": "vous@exemple.com",
+    "message": "Votre message",
+    "messagePlaceholder": "Comment pouvons-nous vous aider ?",
+    "send": "Envoyer le message",
+    "sending": "Envoi…",
+    "success": "Message envoyé. Nous vous répondrons rapidement.",
+    "error": "Impossible d'envoyer votre message. Essayez plutôt WhatsApp.",
+    "whatsapp": "WhatsApp"
+  },
+  "about": {
+    "eyebrow": "Notre histoire",
+    "title": "À propos",
+    "description": "Nous relions la qualité espagnole aux clients mauritaniens, avec des produits premium livrés avec soin et fiabilité.",
+    "story": {
+      "title": "Comment tout a commencé",
+      "paragraph1": "Tout est parti d’une idée simple : rendre facilement accessibles en Mauritanie des produits que nous aimons en Espagne. Notre sélection couvre les soins, les sacs, les chaussures et la beauté, choisis produit par produit.",
+      "paragraph2": "Nous savons combien la confiance compte dans l'achat en ligne : c'est pourquoi nous privilégions l'échange personnel sur WhatsApp — pour poser vos questions, voir des photos supplémentaires et acheter en toute sérénité."
+    },
+    "highlights": {
+      "sourcing": "Sourcé directement en Espagne",
+      "shipping": "Livraison partout en Mauritanie",
+      "support": "Assistance client sur WhatsApp",
+      "authentic": "Authenticité des marques garantie"
+    },
+    "valuesTitle": "Ce qui nous anime",
+    "mission": {
+      "title": "Notre mission",
+      "description": "Proposer des produits espagnols authentiques avec un service d'exception et une livraison fiable."
+    },
+    "values": {
+      "title": "Nos valeurs",
+      "description": "Qualité, authenticité, service client et relations durables."
+    },
+    "promise": {
+      "title": "Notre promesse",
+      "description": "Chaque produit est choisi avec soin et livré avec attention."
+    },
+    "journey": {
+      "title": "Suivez notre aventure",
+      "description": "Nous élargissons sans cesse notre gamme et améliorons notre service. Suivez-nous pour découvrir les nouveautés en premier.",
+      "browseCatalog": "Voir le catalogue",
+      "getInTouch": "Nous contacter"
+    }
+  },
+  "whyChooseUs": {
+    "eyebrow": "Pourquoi nous",
+    "subtitle": "Notre façon de travailler, et ce sur quoi vous pouvez compter.",
+    "features": {
+      "premiumQuality": {
+        "title": "Sélectionnés en Espagne",
+        "description": "Chaque produit du catalogue est choisi en Espagne pour sa qualité."
+      },
+      "support": {
+        "title": "Un accompagnement personnel",
+        "description": "Posez vos questions, demandez des photos et validez les détails sur WhatsApp avant d’acheter."
+      }
+    },
+    "howItWorks": {
+      "title": "Comment ça marche",
+      "steps": {
+        "browse": {
+          "title": "Parcourir",
+          "description": "Explorez notre catalogue."
+        },
+        "contact": {
+          "title": "Contacter",
+          "description": "Écrivez-nous sur WhatsApp."
+        },
+        "confirm": {
+          "title": "Confirmer",
+          "description": "Détails et prix convenus."
+        },
+        "receive": {
+          "title": "Recevoir",
+          "description": "Recevez vos produits."
+        }
+      }
+    },
+    "cta": {
+      "title": "Prêt à découvrir la qualité espagnole ?",
+      "description": "Parcourez notre catalogue et trouvez vos produits dès aujourd'hui.",
+      "button": "Explorer le catalogue"
+    },
+    "promisesTitle": "Ce sur quoi vous pouvez compter"
+  },
+  "footer": {
+    "tagline": "Soins, sacs, chaussures et beauté sélectionnés en Espagne, livrés partout en Mauritanie.",
+    "location": "Nouakchott, Mauritanie",
+    "whatsappSupport": "Assistance WhatsApp",
+    "whatsappGreeting": "Bonjour ! J'ai une question.",
+    "allProducts": "Tous les produits",
+    "help": "Aide",
+    "trackOrder": "Suivre ma commande",
+    "followInstagram": "Suivez-nous sur Instagram",
+    "followFacebook": "Suivez-nous sur Facebook",
+    "rights": "Tous droits réservés.",
+    "language": "Langue",
+    "followTiktok": "Suivez-nous sur TikTok"
+  },
+  "orders": {
+    "eyebrow": "Commandes",
+    "trackTitle": "Suivre votre commande",
+    "trackDescription": "Saisissez la référence figurant dans votre confirmation WhatsApp.",
+    "orderRef": "Référence de commande",
+    "track": "Rechercher",
+    "invalidRef": "Cette référence ne semble pas valide. Elle ressemble à ORD-XXXXX-XXXX.",
+    "checkOnWhatsApp": "Les commandes sont confirmées et suivies sur WhatsApp. Envoyez-nous cette référence et nous vous dirons précisément où elle en est.",
+    "askStatus": "Demander le statut",
+    "whatsappMessage": "Bonjour ! Pouvez-vous me donner le statut de ma commande {ref} ?",
+    "lostRef": "Référence perdue ? <link>Contactez-nous</link> et nous la retrouverons.",
+    "status": {
+      "received": "Commande reçue",
+      "packed": "En préparation",
+      "shipped": "Expédiée",
+      "delivered": "Livrée"
+    }
+  },
+  "notFound": {
+    "title": "Cette page n'existe pas",
+    "description": "La page que vous cherchez a peut-être été déplacée ou supprimée.",
+    "goHome": "Aller à l'accueil",
+    "browseCatalog": "Parcourir le catalogue"
+  },
+  "wishlist": {
+    "add": "Ajouter aux favoris",
+    "remove": "Retirer des favoris"
+  },
+  "recentlyViewed": {
+    "title": "Vus récemment"
+  },
+  "common": {
+    "close": "Fermer",
+    "cancel": "Annuler"
+  },
+  "trust": {
+    "whatsapp": {
+      "title": "Commande sur WhatsApp",
+      "desc": "Posez vos questions et validez chaque détail avant d’acheter."
+    },
+    "delivery": {
+      "title": "Livraison en Mauritanie",
+      "desc": "{min} à {max} jours depuis l’Espagne jusqu’à chez vous."
+    },
+    "deliveryConfirmed": {
+      "title": "Livraison en Mauritanie",
+      "desc": "Délai de livraison confirmé avec vous sur WhatsApp."
+    },
+    "freeDelivery": {
+      "title": "Livraison gratuite",
+      "desc": "Dès {amount} d’achat."
+    },
+    "returns": {
+      "title": "Retours",
+      "desc": "Retours acceptés sous {days} jours — détails sur WhatsApp."
+    },
+    "authentic": {
+      "title": "Produits authentiques",
+      "desc": "Des produits d’origine, achetés en Espagne."
+    }
+  },
+  "stats": {
+    "customers": "{count, plural, one {client servi} other {clients servis}}",
+    "orders": "{count, plural, one {commande livrée} other {commandes livrées}}",
+    "title": "En chiffres"
+  },
+  "checkout": {
+    "title": "Commande",
+    "metaDescription": "Vérifiez votre commande et envoyez-la sur WhatsApp.",
+    "steps": {
+      "review": "Panier",
+      "details": "Coordonnées",
+      "confirm": "Confirmation"
+    },
+    "progress": "Étapes de la commande",
+    "stepOf": "Étape {current} sur {total}",
+    "reviewTitle": "Vérifiez votre commande",
+    "detailsTitle": "Vos coordonnées",
+    "detailsHint": "Elles servent uniquement à confirmer et livrer votre commande.",
+    "confirmTitle": "Confirmer et envoyer",
+    "empty": "Votre panier est vide",
+    "emptyHint": "Ajoutez des produits à votre panier pour passer commande.",
+    "continueShopping": "Continuer mes achats",
+    "back": "Retour",
+    "continue": "Continuer",
+    "edit": "Modifier",
+    "remove": "Retirer",
+    "checking": "Vérification des prix et de la disponibilité…",
+    "unavailableNotice": "Certains produits ne sont plus disponibles. Ils ne sont pas inclus dans votre commande.",
+    "priceNotice": "Certains prix ont changé depuis votre ajout. Les totaux affichés sont à jour.",
+    "checkFailed": "Impossible de vérifier les derniers prix et la disponibilité.",
+    "retry": "Réessayer",
+    "nothingOrderable": "Aucun produit de votre panier n’est disponible pour le moment.",
+    "fields": {
+      "name": "Nom complet",
+      "phone": "Numéro de téléphone",
+      "phoneHint": "Nous vous contacterons à ce numéro pour confirmer.",
+      "city": "Ville",
+      "address": "Adresse",
+      "addressHint": "Quartier, rue, point de repère",
+      "note": "Remarque",
+      "notePlaceholder": "Une précision à nous donner ? (facultatif)"
+    },
+    "errors": {
+      "required": "Ce champ est obligatoire.",
+      "phone": "Saisissez un numéro de téléphone valide."
+    },
+    "summary": {
+      "title": "Récapitulatif",
+      "subtotal": "Sous-total",
+      "delivery": "Livraison",
+      "deliveryConfirmed": "Confirmée sur WhatsApp",
+      "deliveryFree": "Gratuite",
+      "total": "Total",
+      "deliverTo": "Livraison à",
+      "items": "{count, plural, one {# article} other {# articles}}"
+    },
+    "sendNotice": "Votre commande est envoyée à notre équipe sous forme de message WhatsApp. Elle est confirmée dès notre réponse — paiement et livraison sont convenus dans la conversation.",
+    "send": "Envoyer la commande sur WhatsApp",
+    "whatsappMissingTitle": "La commande est momentanément indisponible",
+    "whatsappMissingDescription": "Contactez-nous via la page contact et nous prendrons votre commande.",
+    "contactUs": "Nous contacter",
+    "sentTitle": "Terminez sur WhatsApp",
+    "sentDescription": "WhatsApp s’est ouvert avec votre commande. Appuyez sur envoyer — nous confirmerons votre commande dans la conversation.",
+    "orderRef": "Référence de commande",
+    "sentConfirm": "J’ai envoyé le message",
+    "reopen": "Rouvrir WhatsApp",
+    "doneTitle": "Merci",
+    "doneDescription": "Nous vous répondrons sur WhatsApp pour confirmer votre commande. Conservez votre référence : {ref}.",
+    "trackOrder": "Suivre ma commande",
+    "message": {
+      "greeting": "Bonjour ! Je souhaite passer une commande.",
+      "ref": "Référence : {ref}",
+      "items": "Produits :",
+      "line": "• {name} × {quantity} — {total}",
+      "subtotal": "Sous-total : {amount}",
+      "deliveryFree": "Livraison : gratuite",
+      "deliveryPending": "Livraison : à confirmer",
+      "customer": "Mes coordonnées :",
+      "name": "Nom : {value}",
+      "phone": "Téléphone : {value}",
+      "city": "Ville : {value}",
+      "address": "Adresse : {value}",
+      "note": "Remarque : {value}",
+      "closing": "Merci !"
+    }
+  }
+}

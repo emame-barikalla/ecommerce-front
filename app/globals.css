@@ -1,0 +1,354 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   DESIGN SYSTEM — tokens
+   A single restrained palette: warm neutral base, one brand colour (deep
+   teal), one accent (muted bronze). Everything else is state colour.
+   ========================================================================== */
+
+:root {
+  /* Each colour also has an RGB-channel twin (--x-rgb) so Tailwind opacity
+     modifiers work (bg-ink/25). Without it, Tailwind silently drops every
+     /opacity class on a var() colour — overlays and scrims never rendered. */
+  /* Surfaces */
+  --bg: #ffffff;
+  --bg-rgb: 255 255 255;
+  --bg-subtle: #faf9f7;
+  --bg-subtle-rgb: 250 249 247;
+  --bg-sunken: #f4f2ef;
+  --bg-sunken-rgb: 244 242 239;
+  --surface: #ffffff;
+  --surface-rgb: 255 255 255;
+  --surface-inverse: #14110f;
+  --surface-inverse-rgb: 20 17 15;
+
+  /* Text */
+  --ink: #14110f;
+  --ink-rgb: 20 17 15;
+  --ink-secondary: #6b645d;
+  --ink-secondary-rgb: 107 100 93;
+  /* 4.9:1 on white — the previous #9a938b (3.0:1) failed WCAG AA for text */
+  --ink-tertiary: #77706a;
+  --ink-tertiary-rgb: 119 112 106;
+  --ink-inverse: #faf9f7;
+  --ink-inverse-rgb: 250 249 247;
+
+  /* Lines */
+  --border: #e8e4de;
+  --border-rgb: 232 228 222;
+  --border-strong: #d6d0c8;
+  --border-strong-rgb: 214 208 200;
+
+  /* Brand */
+  --brand: #0e5a54;
+  --brand-rgb: 14 90 84;
+  --brand-hover: #0a423e;
+  --brand-hover-rgb: 10 66 62;
+  --brand-subtle: #eef4f3;
+  --brand-subtle-rgb: 238 244 243;
+  --accent: #9a7b4f;
+  --accent-rgb: 154 123 79;
+  --accent-subtle: #f7f2ea;
+  --accent-subtle-rgb: 247 242 234;
+
+  /* CTA — ink-first, the premium default */
+  --cta: #14110f;
+  --cta-rgb: 20 17 15;
+  --cta-hover: #2a2521;
+  --cta-hover-rgb: 42 37 33;
+  --cta-fg: #ffffff;
+  --cta-fg-rgb: 255 255 255;
+
+  /* State */
+  --success: #1a7f4b;
+  --success-rgb: 26 127 75;
+  --success-subtle: #e9f5ee;
+  --success-subtle-rgb: 233 245 238;
+  --error: #b3261e;
+  --error-rgb: 179 38 30;
+  --error-subtle: #fbeceb;
+  --error-subtle-rgb: 251 236 235;
+  --sale: #b3261e;
+  --sale-rgb: 179 38 30;
+  --whatsapp: #25d366;
+  --whatsapp-rgb: 37 211 102;
+  --whatsapp-hover: #1da851;
+  --whatsapp-hover-rgb: 29 168 81;
+
+  --ring: #14110f;
+
+  --ring-rgb: 20 17 15;
+
+  /* Radii — restrained, not pill-everything */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Shadows — barely there */
+  --shadow-xs: 0 1px 2px 0 rgb(20 17 15 / 0.04);
+  --shadow-sm: 0 1px 3px 0 rgb(20 17 15 / 0.05), 0 1px 2px -1px rgb(20 17 15 / 0.04);
+  --shadow-md: 0 4px 12px -2px rgb(20 17 15 / 0.06), 0 2px 4px -2px rgb(20 17 15 / 0.04);
+  --shadow-lg: 0 12px 32px -8px rgb(20 17 15 / 0.10), 0 4px 8px -4px rgb(20 17 15 / 0.04);
+  --shadow-overlay: 0 24px 64px -12px rgb(20 17 15 / 0.18);
+
+  /* Layout */
+  --header-h: 4rem;
+  --announcement-h: 2.25rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Anchor targets clear the sticky header */
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+  }
+
+  body {
+    color: var(--ink);
+    background-color: var(--bg);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    /* Never allow a stray wide element to scroll the page sideways */
+    overflow-x: clip;
+  }
+
+  /* Arabic body text uses IBM Plex Sans Arabic; its taller ascenders and
+     descenders need a more open line height than Latin text. */
+  html[dir='rtl'] body {
+    font-family: var(--font-arabic), system-ui, sans-serif;
+    line-height: 1.8;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  /* Arabic script has no meaningful tight-tracking, and negative tracking
+     damages letter joining. */
+  html[dir='rtl'] h1,
+  html[dir='rtl'] h2,
+  html[dir='rtl'] h3,
+  html[dir='rtl'] h4,
+  html[dir='rtl'] h5,
+  html[dir='rtl'] h6,
+  html[dir='rtl'] .tracking-tight,
+  html[dir='rtl'] .tracking-tighter,
+  html[dir='rtl'] .tracking-wide,
+  html[dir='rtl'] .tracking-wider,
+  html[dir='rtl'] .tracking-widest {
+    letter-spacing: 0;
+  }
+
+  /* Uppercase eyebrow labels are illegible in Arabic — leave the case alone. */
+  html[dir='rtl'] .uppercase {
+    text-transform: none;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+  }
+
+  ::selection {
+    background-color: rgb(14 90 84 / 0.14);
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 999px;
+    border: 3px solid var(--bg);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--ink-tertiary); }
+
+  /* Number inputs / prices should never reflow as digits change */
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* ---------- Layout ---------- */
+  .container-page {
+    @apply w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12;
+  }
+  .container-narrow {
+    @apply w-full max-w-3xl mx-auto px-5 sm:px-8;
+  }
+
+  /* ---------- Type scale ---------- */
+  .t-display {
+    @apply font-display font-normal leading-[1.02] tracking-[-0.03em];
+    font-size: clamp(2.5rem, 7vw, 5rem);
+  }
+  .t-h1 {
+    @apply font-display font-normal leading-[1.08] tracking-[-0.025em];
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+  }
+  .t-h2 {
+    @apply font-display font-normal leading-[1.12] tracking-[-0.02em];
+    font-size: clamp(1.625rem, 3vw, 2.25rem);
+  }
+  .t-h3 {
+    @apply text-lg md:text-xl font-medium leading-snug tracking-[-0.015em];
+  }
+  .t-body {
+    @apply text-body text-secondary;
+  }
+  .t-small {
+    @apply text-small text-secondary;
+  }
+  .t-label {
+    @apply text-caption font-medium uppercase tracking-[0.12em] text-tertiary;
+  }
+
+  /* The display face is Latin-only; Arabic headings use Kufi instead, at a
+     heavier weight so they carry the same presence as the serif. */
+  html[dir='rtl'] .font-display,
+  html[dir='rtl'] .t-display,
+  html[dir='rtl'] .t-h1,
+  html[dir='rtl'] .t-h2 {
+    font-family: var(--font-arabic-display), var(--font-arabic), system-ui, sans-serif;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  /* ---------- Surfaces ---------- */
+  .surface {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  .hairline { border-color: var(--border); }
+
+  /* ---------- Form control shared base ---------- */
+  .field {
+    @apply w-full bg-white text-ink text-sm rounded-md border border-line
+           px-3.5 py-2.5 transition-colors duration-150
+           placeholder:text-tertiary
+           hover:border-line-strong
+           focus:outline-none focus:border-ink focus:ring-1 focus:ring-ink
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .field-invalid {
+    @apply border-error hover:border-error focus:border-error focus:ring-error;
+  }
+
+  /* Native selects need the arrow re-added on the correct side per direction */
+  .field-select {
+    @apply field appearance-none pe-9 cursor-pointer bg-no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b645d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+  }
+  html[dir='rtl'] .field-select {
+    background-position: left 0.75rem center;
+  }
+
+  /* Set pre-paint by the locale layout's boot script for a returning visitor
+     who already dismissed the bar — avoids a flash-then-collapse. */
+  html[data-announcement='hidden'] .announcement-bar {
+    display: none;
+  }
+
+  /* ---------- Skeleton ---------- */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--bg-sunken) 25%,
+      #eae7e2 37%,
+      var(--bg-sunken) 63%
+    );
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-ink { color: var(--ink); }
+  .text-secondary { color: var(--ink-secondary); }
+  .text-tertiary { color: var(--ink-tertiary); }
+  .text-brand { color: var(--brand); }
+  .text-sale { color: var(--sale); }
+
+  .bg-subtle { background-color: var(--bg-subtle); }
+  .bg-sunken { background-color: var(--bg-sunken); }
+  .bg-ink { background-color: var(--ink); }
+
+  .border-line { border-color: var(--border); }
+  .border-line-strong { border-color: var(--border-strong); }
+
+  /* Hide scrollbar on horizontal chip rails while keeping them scrollable */
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* Direction-aware slide-in for drawers anchored with `end-0`.
+     `translate-x-full` moves the wrong way in RTL, so pair it with an
+     explicit RTL override. */
+  .drawer-hidden-end { transform: translateX(100%); }
+  html[dir='rtl'] .drawer-hidden-end { transform: translateX(-100%); }
+  .drawer-hidden-start { transform: translateX(-100%); }
+  html[dir='rtl'] .drawer-hidden-start { transform: translateX(100%); }
+  .drawer-shown { transform: translateX(0); }
+
+  .animate-fade-in { animation: fadeIn 0.35s ease-out both; }
+  .animate-rise { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .animate-slide-up { animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  /* Cart badge bump when the count changes */
+  .animate-pop { animation: pop 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+  /* Cheap, GPU-friendly stagger for grids that appear on load */
+  .stagger > * { animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .stagger > *:nth-child(1) { animation-delay: 0ms; }
+  .stagger > *:nth-child(2) { animation-delay: 45ms; }
+  .stagger > *:nth-child(3) { animation-delay: 90ms; }
+  .stagger > *:nth-child(4) { animation-delay: 135ms; }
+  .stagger > *:nth-child(5) { animation-delay: 180ms; }
+  .stagger > *:nth-child(6) { animation-delay: 225ms; }
+  .stagger > *:nth-child(7) { animation-delay: 270ms; }
+  .stagger > *:nth-child(8) { animation-delay: 315ms; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pop {
+  0% { transform: scale(0.6); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
