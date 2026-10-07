@@ -56,7 +56,7 @@ export default function Drawer({
         onClick={onClose}
         aria-hidden="true"
         className={cn(
-          'fixed inset-0 z-overlay bg-ink/25 transition-opacity duration-300',
+          'fixed inset-0 z-overlay bg-scrim/40 transition-opacity duration-300',
           open ? 'opacity-100' : 'opacity-0 pointer-events-none'
         )}
       />
@@ -68,7 +68,7 @@ export default function Drawer({
         aria-label={title}
         aria-hidden={!open}
         className={cn(
-          'fixed z-drawer flex flex-col bg-white border-line shadow-overlay',
+          'fixed z-drawer flex flex-col bg-surface border-line shadow-overlay',
           'duration-300 ease-out',
           panelBySide[side],
           // Opening shows the panel at once (so it can take focus); closing
@@ -99,7 +99,7 @@ export default function Drawer({
 
         <div className="flex-1 overflow-y-auto overscroll-contain">{children}</div>
 
-        {footer && <div className="shrink-0 border-t border-line bg-white">{footer}</div>}
+        {footer && <div className="shrink-0 border-t border-line bg-surface">{footer}</div>}
       </div>
     </>
   );

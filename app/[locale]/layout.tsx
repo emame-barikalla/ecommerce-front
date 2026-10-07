@@ -6,6 +6,7 @@ import '../globals.css';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import { BottomNavSpacer } from '@/components/BottomNav';
 import ToastProvider from '@/components/ToastProvider';
 import { CartProvider } from '@/lib/context/CartContext';
 import { StoreSettingsProvider } from '@/lib/context/StoreSettingsContext';
@@ -13,7 +14,8 @@ import { getCategoriesServer, getStoreSettings } from '@/lib/utils/supabase-serv
 import { formatPrice } from '@/components/ui/Price';
 import { LOCALES, SITE_URL, isLocale } from '@/lib/config';
 import { fontVariables } from '@/lib/fonts';
-import { hasDeliveryEstimate } from '@/lib/store/settings-schema';
+import { LOCAL_DELIVERY_DAYS, spainDeliveryDays } from '@/lib/store/delivery';
+import { THEME_BOOT, THEME_COLORS } from '@/lib/theme';
 
 /** Public pages are static and refreshed at most once a minute (ISR). */
 export const revalidate = 60;
@@ -33,7 +35,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 export const viewport: Viewport = {
-  themeColor: '#ffffff',
+  themeColor: THEME_COLORS.light,
+  // Lets fixed bars use env(safe-area-inset-*) on notched phones.
+  viewportFit: 'cover',
 };
 
 /**
@@ -67,9 +71,7 @@ export default async function LocaleLayout({
     settings.freeDeliveryThreshold
       ? tAnnouncement('freeDelivery', { amount: formatPrice(settings.freeDeliveryThreshold) })
       : null,
-    hasDeliveryEstimate(settings)
-      ? tAnnouncement('delivery', { min: settings.deliveryDaysMin, max: settings.deliveryDaysMax })
-      : null,
+    tAnnouncement('delivery', { days: LOCAL_DELIVERY_DAYS, ...spainDeliveryDays(settings) }),
     tAnnouncement('whatsapp'),
     settings.authenticityGuarantee ? tAnnouncement('authentic') : null,
   ].filter((m): m is string => !!m);
@@ -81,9 +83,9 @@ export default async function LocaleLayout({
     // no-JS visitors get the right language and direction on first byte.
     <html lang={locale} dir={dir} className={fontVariables} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: ANNOUNCEMENT_BOOT }} />
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT + ANNOUNCEMENT_BOOT }} />
       </head>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased bg-background text-ink">
         <NextIntlClientProvider messages={messages}>
           <StoreSettingsProvider settings={settings}>
             <CartProvider>
@@ -99,6 +101,7 @@ export default async function LocaleLayout({
                 {children}
               </main>
               <Footer locale={locale} />
+              <BottomNavSpacer />
               <WhatsAppButton />
             </CartProvider>
           </StoreSettingsProvider>

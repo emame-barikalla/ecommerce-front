@@ -6,7 +6,7 @@ const variants = {
   subtle: 'text-ink-secondary hover:text-ink hover:bg-surface-sunken',
   outline: 'border border-line text-ink hover:border-ink',
   /** Floating over imagery. */
-  overlay: 'bg-white/90 text-ink hover:bg-white shadow-xs',
+  overlay: 'bg-surface/90 text-ink hover:bg-surface shadow-xs',
   danger: 'text-ink-tertiary hover:text-error hover:bg-error-subtle',
 };
 

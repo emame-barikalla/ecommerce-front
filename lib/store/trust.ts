@@ -1,4 +1,5 @@
-import { hasDeliveryEstimate, type StoreSettings } from '@/lib/store/settings-schema';
+import type { StoreSettings } from '@/lib/store/settings-schema';
+import { LOCAL_DELIVERY_DAYS, spainDeliveryDays } from '@/lib/store/delivery';
 
 /**
  * Every reassurance the storefront shows is derived from store settings.
@@ -26,11 +27,8 @@ export function getTrustItems(settings: StoreSettings, formatPrice: (n: number) 
   if (settings.freeDeliveryThreshold) {
     items.push({ key: 'freeDelivery', values: { amount: formatPrice(settings.freeDeliveryThreshold) } });
   }
-  items.push(
-    hasDeliveryEstimate(settings)
-      ? { key: 'delivery', values: { min: settings.deliveryDaysMin, max: settings.deliveryDaysMax } }
-      : { key: 'deliveryConfirmed', values: {} }
-  );
+  // Both promises side by side: local stock in a day, Spain orders in the range.
+  items.push({ key: 'delivery', values: { days: LOCAL_DELIVERY_DAYS, ...spainDeliveryDays(settings) } });
   if (settings.returnDays) items.push({ key: 'returns', values: { days: settings.returnDays } });
   if (settings.authenticityGuarantee) items.push({ key: 'authentic', values: {} });
   items.push({ key: 'whatsapp', values: {} });

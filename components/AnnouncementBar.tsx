@@ -36,7 +36,7 @@ export default function AnnouncementBar({ messages }: { messages: string[] }) {
   };
 
   return (
-    <div className="announcement-bar relative bg-ink text-ink-inverse h-[var(--announcement-h)] flex items-center overflow-hidden">
+    <div className="announcement-bar relative bg-surface-inverse text-white/90 h-[var(--announcement-h)] flex items-center overflow-hidden">
       <div className="container-page flex items-center justify-center">
         {/* No aria-live: a rotating marketing line should not interrupt a screen reader */}
         <p key={index} className="animate-fade-in text-caption tracking-[0.04em] text-center truncate px-10">
@@ -47,7 +47,7 @@ export default function AnnouncementBar({ messages }: { messages: string[] }) {
         type="button"
         onClick={dismiss}
         aria-label={t('dismiss')}
-        className="absolute end-1 sm:end-4 top-1/2 -translate-y-1/2 grid place-items-center w-9 h-9 rounded-xs text-ink-inverse/70 hover:text-ink-inverse hover:bg-white/10 transition-colors"
+        className="absolute end-1 sm:end-4 top-1/2 -translate-y-1/2 grid place-items-center w-9 h-9 rounded-xs text-white/70 hover:text-white hover:bg-white/10 transition-colors"
       >
         <X size={14} aria-hidden="true" />
       </button>

@@ -5,6 +5,7 @@ import { SETTING_KEYS, type StoreSettings } from '@/lib/store/settings-schema';
 import type {
   Availability,
   CategoryWithDetails,
+  Gender,
   Locale,
   ProductImage,
   ProductWithDetails,
@@ -22,10 +23,10 @@ const supabase = () => createClient();
 
 function fail(context: string, error: { message: string; code?: string } | null, userMessage: string): never {
   console.error(`[admin] ${context}`, error);
-  if (error?.code === '42703') {
-    // undefined_column: the p1_catalog_fields.sql migration has not run.
+  if (error?.code === '42703' || error?.code === 'PGRST204') {
+    // undefined_column: a catalog migration has not run.
     throw new AdminError(
-      'La base de données n’est pas à jour : exécutez supabase/p1_catalog_fields.sql dans Supabase, puis réessayez.'
+      'La base de données n’est pas à jour : exécutez supabase/p1_catalog_fields.sql puis supabase/p2_size_gender.sql dans Supabase, et réessayez.'
     );
   }
   if (error?.code === '42501') throw new AdminError('Action refusée : ce compte n’a pas les droits administrateur.');
@@ -135,6 +136,9 @@ export interface ProductInput {
   price: number;
   compareAtPrice: number | null;
   availability: Availability | null;
+  /** Optional size / volume (`M`, `42`, `50 ML`, `41, 42, 43`). */
+  size: string | null;
+  gender: Gender | null;
   categoryId: string | null;
   sortOrder: number;
   isFeatured: boolean;
@@ -183,6 +187,8 @@ export async function saveProduct(input: ProductInput, id?: string): Promise<str
     price: input.price,
     compare_at_price: input.compareAtPrice,
     availability: input.availability,
+    size: input.size,
+    gender: input.gender,
     category_id: input.categoryId,
     sort_order: input.sortOrder,
     is_featured: input.isFeatured,

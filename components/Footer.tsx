@@ -35,7 +35,6 @@ export default async function Footer({ locale }: { locale: string }) {
     { label: nav('whyUs'), href: `/${locale}/why-choose-us` },
     { label: nav('about'), href: `/${locale}/about` },
     { label: nav('contact'), href: `/${locale}/contact` },
-    { label: t('trackOrder'), href: `/${locale}/orders/track` },
   ];
 
   const linkClass = 'text-ink-secondary hover:text-ink transition-colors';

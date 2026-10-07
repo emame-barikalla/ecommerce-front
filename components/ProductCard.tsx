@@ -7,11 +7,13 @@ import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 import { Check, Heart, ImageOff, Plus } from 'lucide-react';
 import { useCartContext } from '@/lib/context/CartContext';
-import { useWishlist } from '@/lib/hooks/useWishlist';
+import { useFavoriteToggle } from '@/lib/hooks/useFavoriteToggle';
 import { categoryName, localizedName, sortImages } from '@/lib/i18n/localize';
+import { sizeKind, sizeValues } from '@/lib/utils/size';
 import type { ProductWithDetails, Locale } from '@/lib/types/database';
 import { Badge } from './ui/Badge';
 import Price, { discountPercent } from './ui/Price';
+import DeliveryInfo from './DeliveryInfo';
 import { cn } from '@/lib/utils/cn';
 
 const NEW_FOR_DAYS = 30;
@@ -33,12 +35,13 @@ export default function ProductCard({
   const t = useTranslations('catalog');
   const tw = useTranslations('wishlist');
   const { addToCart } = useCartContext();
-  const { isWishlisted, toggle } = useWishlist();
+  const { isWishlisted, toggleFavorite } = useFavoriteToggle();
   const [added, setAdded] = useState(false);
 
   const name = localizedName(product, locale, product.slug);
   const category = product.category ? categoryName(product.category, locale) : '';
   const [primary, secondary] = sortImages(product.images);
+  const sizeList = sizeValues(product.size);
 
   const soldOut = product.availability === 'out_of_stock';
   const discount = discountPercent(product.price, product.compare_at_price);
@@ -67,7 +70,7 @@ export default function ProductCard({
               sizes={sizes}
               priority={priority}
               className={cn(
-                'object-cover transition-opacity duration-500 ease-out',
+                'object-cover transition-[opacity,transform] duration-700 ease-out md:group-hover:scale-[1.03]',
                 secondary && 'md:group-hover:opacity-0',
                 soldOut && 'opacity-60'
               )}
@@ -99,21 +102,26 @@ export default function ProductCard({
           ) : null}
         </div>
 
+        {/* Always visible: the heart is how customers discover favorites. */}
         <button
           type="button"
-          onClick={() => toggle(product.id)}
+          onClick={() => toggleFavorite(product.id, name)}
           aria-label={`${wishlisted ? tw('remove') : tw('add')} — ${name}`}
           aria-pressed={wishlisted}
-          className={cn(
-            'absolute z-10 top-1.5 end-1.5 grid place-items-center w-11 h-11 rounded-full text-ink',
-            'transition-opacity duration-200',
-            // Always visible on touch, revealed on hover for pointer devices
-            'md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100',
-            wishlisted && 'md:opacity-100'
-          )}
+          className="absolute z-10 top-1.5 end-1.5 grid place-items-center w-11 h-11 rounded-full text-ink"
         >
-          <span className="grid place-items-center w-8 h-8 rounded-full bg-white/90 shadow-xs">
-            <Heart size={15} aria-hidden="true" className={wishlisted ? 'fill-sale text-sale' : 'fill-none'} />
+          <span
+            className={cn(
+              'grid place-items-center w-9 h-9 rounded-full bg-surface/90 backdrop-blur-sm shadow-xs transition-transform duration-200',
+              'hover:scale-110 active:scale-90'
+            )}
+          >
+            <Heart
+              size={16}
+              strokeWidth={1.75}
+              aria-hidden="true"
+              className={cn('transition-colors', wishlisted ? 'fill-brand text-brand' : 'fill-none')}
+            />
           </span>
         </button>
 
@@ -124,11 +132,13 @@ export default function ProductCard({
             aria-label={`${t('addToCart')} — ${name}`}
             className={cn(
               'absolute z-10 bottom-2.5 end-2.5 md:inset-x-2.5 md:end-auto md:w-[calc(100%-1.25rem)]',
-              'inline-flex items-center justify-center gap-2 h-11 w-11 rounded-md shadow-xs',
+              'inline-flex items-center justify-center gap-2 h-10 w-10 md:h-11 rounded-full md:rounded-md shadow-sm',
               'text-small font-medium transition-all duration-200 active:scale-[0.97]',
               'md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100',
               'focus-visible:translate-y-0 focus-visible:opacity-100',
-              added ? 'bg-success text-white' : 'bg-white text-ink hover:bg-ink hover:text-ink-inverse'
+              added
+                ? 'bg-success text-ink-inverse'
+                : 'bg-surface/95 text-ink hover:bg-ink hover:text-ink-inverse'
             )}
           >
             {added ? (
@@ -150,7 +160,16 @@ export default function ProductCard({
             <span className="line-clamp-2">{name}</span>
           </Link>
         </h3>
+        {sizeList.length > 0 && (
+          <p className="text-caption text-ink-tertiary">
+            {t(sizeKind(sizeList[0]) === 'volume' ? 'volume' : 'size')}:{' '}
+            <bdi dir="ltr" className="text-ink-secondary font-medium">
+              {sizeList.join(' · ')}
+            </bdi>
+          </p>
+        )}
         <Price value={product.price} compareAt={product.compare_at_price} size="sm" className="mt-0.5" />
+        {!soldOut && <DeliveryInfo availability={product.availability} variant="compact" className="mt-0.5" />}
       </div>
     </article>
   );

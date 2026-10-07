@@ -4,14 +4,14 @@ import type { Availability } from '@/lib/types/database';
 
 /**
  * Canonical + hreflang for a locale-agnostic path (e.g. `/catalog/foo`).
- * `x-default` points at English, the middleware's default locale.
+ * `x-default` points at Arabic, the middleware's default locale.
  */
 export function localizedAlternates(locale: string, path = ''): Metadata['alternates'] {
   return {
     canonical: `/${locale}${path}`,
     languages: {
       ...Object.fromEntries(LOCALES.map((l) => [l, `/${l}${path}`])),
-      'x-default': `/en${path}`,
+      'x-default': `/ar${path}`,
     },
   };
 }

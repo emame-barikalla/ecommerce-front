@@ -4,100 +4,168 @@
 
 /* ==========================================================================
    DESIGN SYSTEM — tokens
-   A single restrained palette: warm neutral base, one brand colour (deep
-   teal), one accent (muted bronze). Everything else is state colour.
+   Charte graphique: warm ivory base, espresso ink, one brand colour (a
+   muted rosewood — feminine without being pink) and a champagne accent.
+   Every colour has an RGB twin (--x-rgb) so Tailwind opacity modifiers work
+   (bg-ink/25); without it Tailwind silently drops /opacity on var() colours.
+   Dark mode redefines the same tokens, so components never branch on theme.
    ========================================================================== */
 
 :root {
-  /* Each colour also has an RGB-channel twin (--x-rgb) so Tailwind opacity
-     modifiers work (bg-ink/25). Without it, Tailwind silently drops every
-     /opacity class on a var() colour — overlays and scrims never rendered. */
+  color-scheme: light;
+
   /* Surfaces */
-  --bg: #ffffff;
-  --bg-rgb: 255 255 255;
-  --bg-subtle: #faf9f7;
-  --bg-subtle-rgb: 250 249 247;
-  --bg-sunken: #f4f2ef;
-  --bg-sunken-rgb: 244 242 239;
+  --bg: #fdfbf9;
+  --bg-rgb: 253 251 249;
+  --bg-subtle: #f8f3ef;
+  --bg-subtle-rgb: 248 243 239;
+  --bg-sunken: #f2ebe5;
+  --bg-sunken-rgb: 242 235 229;
   --surface: #ffffff;
   --surface-rgb: 255 255 255;
-  --surface-inverse: #14110f;
-  --surface-inverse-rgb: 20 17 15;
+  /* Always dark, in both themes — editorial panels that carry white type */
+  --surface-inverse: #231c1d;
+  --surface-inverse-rgb: 35 28 29;
 
   /* Text */
-  --ink: #14110f;
-  --ink-rgb: 20 17 15;
-  --ink-secondary: #6b645d;
-  --ink-secondary-rgb: 107 100 93;
-  /* 4.9:1 on white — the previous #9a938b (3.0:1) failed WCAG AA for text */
-  --ink-tertiary: #77706a;
-  --ink-tertiary-rgb: 119 112 106;
-  --ink-inverse: #faf9f7;
-  --ink-inverse-rgb: 250 249 247;
+  --ink: #1f1a1b;
+  --ink-rgb: 31 26 27;
+  --ink-secondary: #665b5a;
+  --ink-secondary-rgb: 102 91 90;
+  --ink-tertiary: #7a6e6c;
+  --ink-tertiary-rgb: 122 110 108;
+  --ink-inverse: #fdfbf9;
+  --ink-inverse-rgb: 253 251 249;
 
   /* Lines */
-  --border: #e8e4de;
-  --border-rgb: 232 228 222;
-  --border-strong: #d6d0c8;
-  --border-strong-rgb: 214 208 200;
+  --border: #ece4de;
+  --border-rgb: 236 228 222;
+  --border-strong: #dccfc6;
+  --border-strong-rgb: 220 207 198;
 
-  /* Brand */
-  --brand: #0e5a54;
-  --brand-rgb: 14 90 84;
-  --brand-hover: #0a423e;
-  --brand-hover-rgb: 10 66 62;
-  --brand-subtle: #eef4f3;
-  --brand-subtle-rgb: 238 244 243;
-  --accent: #9a7b4f;
-  --accent-rgb: 154 123 79;
-  --accent-subtle: #f7f2ea;
-  --accent-subtle-rgb: 247 242 234;
+  /* Brand — rosewood */
+  --brand: #94495a;
+  --brand-rgb: 148 73 90;
+  --brand-hover: #7a3a49;
+  --brand-hover-rgb: 122 58 73;
+  --brand-subtle: #f7ecee;
+  --brand-subtle-rgb: 247 236 238;
+  /* Accent — champagne */
+  --accent: #9c7a45;
+  --accent-rgb: 156 122 69;
+  --accent-subtle: #f6efe3;
+  --accent-subtle-rgb: 246 239 227;
 
   /* CTA — ink-first, the premium default */
-  --cta: #14110f;
-  --cta-rgb: 20 17 15;
-  --cta-hover: #2a2521;
-  --cta-hover-rgb: 42 37 33;
-  --cta-fg: #ffffff;
-  --cta-fg-rgb: 255 255 255;
+  --cta-hover: #3a3133;
 
   /* State */
-  --success: #1a7f4b;
-  --success-rgb: 26 127 75;
-  --success-subtle: #e9f5ee;
-  --success-subtle-rgb: 233 245 238;
+  --success: #2f7a55;
+  --success-rgb: 47 122 85;
+  --success-subtle: #e8f3ec;
+  --success-subtle-rgb: 232 243 236;
   --error: #b3261e;
   --error-rgb: 179 38 30;
   --error-subtle: #fbeceb;
   --error-subtle-rgb: 251 236 235;
-  --sale: #b3261e;
-  --sale-rgb: 179 38 30;
-  --whatsapp: #25d366;
-  --whatsapp-rgb: 37 211 102;
-  --whatsapp-hover: #1da851;
-  --whatsapp-hover-rgb: 29 168 81;
+  --sale: #a8323e;
+  --sale-rgb: 168 50 62;
+  --whatsapp: #1fa855;
+  --whatsapp-rgb: 31 168 85;
+  --whatsapp-hover: #188a45;
+  --whatsapp-hover-rgb: 24 138 69;
 
-  --ring: #14110f;
+  --ring: #94495a;
+  /* Image scrims / backdrops — intentionally not redefined for dark */
+  --scrim-rgb: 25 17 19;
 
-  --ring-rgb: 20 17 15;
+  /* Radii — soft, never bubbly */
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
 
-  /* Radii — restrained, not pill-everything */
-  --radius-xs: 0.25rem;
-  --radius-sm: 0.375rem;
-  --radius: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-
-  /* Shadows — barely there */
-  --shadow-xs: 0 1px 2px 0 rgb(20 17 15 / 0.04);
-  --shadow-sm: 0 1px 3px 0 rgb(20 17 15 / 0.05), 0 1px 2px -1px rgb(20 17 15 / 0.04);
-  --shadow-md: 0 4px 12px -2px rgb(20 17 15 / 0.06), 0 2px 4px -2px rgb(20 17 15 / 0.04);
-  --shadow-lg: 0 12px 32px -8px rgb(20 17 15 / 0.10), 0 4px 8px -4px rgb(20 17 15 / 0.04);
-  --shadow-overlay: 0 24px 64px -12px rgb(20 17 15 / 0.18);
+  /* Shadows — warm and barely there */
+  --shadow-xs: 0 1px 2px 0 rgb(60 30 35 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(60 30 35 / 0.06), 0 1px 2px -1px rgb(60 30 35 / 0.04);
+  --shadow-md: 0 6px 16px -4px rgb(60 30 35 / 0.08), 0 2px 4px -2px rgb(60 30 35 / 0.04);
+  --shadow-lg: 0 16px 36px -10px rgb(60 30 35 / 0.14), 0 4px 8px -4px rgb(60 30 35 / 0.05);
+  --shadow-overlay: 0 24px 64px -12px rgb(40 20 25 / 0.24);
 
   /* Layout */
   --header-h: 4rem;
   --announcement-h: 2.25rem;
+  /* Mobile bottom navigation height (0 on desktop, see below) */
+  --bottom-nav-h: 0px;
+}
+
+/* Dark: a warm plum-black, never pure #000, so the identity survives. */
+:root.dark {
+  color-scheme: dark;
+
+  --bg: #151012;
+  --bg-rgb: 21 16 18;
+  --bg-subtle: #1b1517;
+  --bg-subtle-rgb: 27 21 23;
+  --bg-sunken: #261e21;
+  --bg-sunken-rgb: 38 30 33;
+  --surface: #1e181a;
+  --surface-rgb: 30 24 26;
+  --surface-inverse: #2a2124;
+  --surface-inverse-rgb: 42 33 36;
+
+  --ink: #f4ede9;
+  --ink-rgb: 244 237 233;
+  --ink-secondary: #c2b5b0;
+  --ink-secondary-rgb: 194 181 176;
+  --ink-tertiary: #a39591;
+  --ink-tertiary-rgb: 163 149 145;
+  --ink-inverse: #1a1416;
+  --ink-inverse-rgb: 26 20 22;
+
+  --border: #33292c;
+  --border-rgb: 51 41 44;
+  --border-strong: #4a3d41;
+  --border-strong-rgb: 74 61 65;
+
+  --brand: #e09aa8;
+  --brand-rgb: 224 154 168;
+  --brand-hover: #eab3be;
+  --brand-hover-rgb: 234 179 190;
+  --brand-subtle: #35222a;
+  --brand-subtle-rgb: 53 34 42;
+  --accent: #d8b98a;
+  --accent-rgb: 216 185 138;
+  --accent-subtle: #2f2619;
+  --accent-subtle-rgb: 47 38 25;
+
+  --cta-hover: #ffffff;
+
+  --success: #6cc596;
+  --success-rgb: 108 197 150;
+  --success-subtle: #17291f;
+  --success-subtle-rgb: 23 41 31;
+  --error: #f08a80;
+  --error-rgb: 240 138 128;
+  --error-subtle: #3a1c1b;
+  --error-subtle-rgb: 58 28 27;
+  --sale: #e8838d;
+  --sale-rgb: 232 131 141;
+
+  --ring: #e09aa8;
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.35);
+  --shadow-md: 0 6px 16px -4px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 16px 36px -10px rgb(0 0 0 / 0.55);
+  --shadow-overlay: 0 24px 64px -12px rgb(0 0 0 / 0.6);
+}
+
+@media (max-width: 1023.98px) {
+  :root {
+    --bottom-nav-h: 4rem;
+  }
 }
 
 @layer base {
@@ -118,8 +186,8 @@
     overflow-x: clip;
   }
 
-  /* Arabic body text uses IBM Plex Sans Arabic; its taller ascenders and
-     descenders need a more open line height than Latin text. */
+  /* Arabic body text uses Tajawal — light, modern and very legible. Its
+     taller ascenders need a more open line height than Latin text. */
   html[dir='rtl'] body {
     font-family: var(--font-arabic), system-ui, sans-serif;
     line-height: 1.8;
@@ -163,7 +231,7 @@
   }
 
   ::selection {
-    background-color: rgb(14 90 84 / 0.14);
+    background-color: rgb(var(--brand-rgb) / 0.2);
   }
 
   ::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -223,16 +291,25 @@
     @apply text-caption font-medium uppercase tracking-[0.12em] text-tertiary;
   }
 
-  /* The display face is Latin-only; Arabic headings use Kufi instead, at a
-     heavier weight so they carry the same presence as the serif. */
+  /* The display face is Latin-only; Arabic headings use El Messiri — soft,
+     elegant curves that echo the serif without looking traditional. */
   html[dir='rtl'] .font-display,
   html[dir='rtl'] .t-display,
   html[dir='rtl'] .t-h1,
-  html[dir='rtl'] .t-h2 {
+  html[dir='rtl'] .t-h2,
+  html[dir='rtl'] .t-h3 {
     font-family: var(--font-arabic-display), var(--font-arabic), system-ui, sans-serif;
     font-weight: 600;
-    line-height: 1.35;
+    line-height: 1.45;
   }
+  html[dir='rtl'] .t-display {
+    font-size: clamp(2.125rem, 6vw, 4.25rem);
+  }
+  /* Tajawal reads small next to Latin at the same size: nudge UI text up. */
+  html[dir='rtl'] .text-caption { font-size: 0.8125rem; }
+  html[dir='rtl'] .text-small { font-size: 0.875rem; }
+  html[dir='rtl'] .text-sm { font-size: 0.9375rem; }
+  html[dir='rtl'] .text-body { font-size: 1rem; }
 
   /* ---------- Surfaces ---------- */
   .surface {
@@ -243,13 +320,26 @@
 
   .hairline { border-color: var(--border); }
 
+  /* Fixed chrome (bottom nav, sticky purchase bar) clears the phone's home
+     indicator; the page reserves the same space so nothing hides beneath. */
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+  .bottom-nav-space { padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom)); }
+  @media (min-width: 1024px) {
+    .bottom-nav-space { padding-bottom: 0; }
+  }
+
+  /* Theme switches should not animate every colour on the page. */
+  html.theme-switching *, html.theme-switching *::before, html.theme-switching *::after {
+    transition: none !important;
+  }
+
   /* ---------- Form control shared base ---------- */
   .field {
-    @apply w-full bg-white text-ink text-sm rounded-md border border-line
+    @apply w-full bg-surface text-ink text-sm rounded-md border border-line
            px-3.5 py-2.5 transition-colors duration-150
            placeholder:text-tertiary
            hover:border-line-strong
-           focus:outline-none focus:border-ink focus:ring-1 focus:ring-ink
+           focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand
            disabled:opacity-50 disabled:cursor-not-allowed;
   }
   .field-invalid {
@@ -278,7 +368,7 @@
     background: linear-gradient(
       90deg,
       var(--bg-sunken) 25%,
-      #eae7e2 37%,
+      var(--bg-subtle) 37%,
       var(--bg-sunken) 63%
     );
     background-size: 400% 100%;

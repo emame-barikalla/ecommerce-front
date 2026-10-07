@@ -184,6 +184,13 @@ Visit:
    `products.compare_at_price`, `products.availability` (NULL = non précisée),
    `products.is_featured`, `categories.image_url`, et la lecture admin des
    messages de contact / inscriptions newsletter.
+   Exécutez ensuite `supabase/p2_size_gender.sql`, qui ajoute
+   `products.size` (taille / contenance facultative : `M`, `42`, `50 ML`,
+   ou plusieurs valeurs `41, 42, 43`) et `products.gender` (rayon
+   Femme / Homme / Mixte ; NULL = affiché dans les deux rayons).
+   **Disponibilité et livraison :** « En stock » / « Stock faible » = produit
+   déjà en Mauritanie (livraison en 1 jour) ; « Sur commande » ou non précisée
+   = commandé en Espagne (délai Espagne des réglages, 7–14 jours par défaut).
 2. Dans `/admin/settings`, renseignez au minimum le **numéro WhatsApp** :
    sans lui, la commande est désactivée sur la boutique.
 3. Les engagements (livraison gratuite, délais, retours, authenticité) et les

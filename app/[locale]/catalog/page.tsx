@@ -15,6 +15,8 @@ import { ProductGridSkeleton } from '@/components/ui/Skeleton';
 import CategoryFilter from '@/components/commerce/CategoryFilter';
 import SortSelect, { isSortOption, type SortOption } from '@/components/commerce/SortSelect';
 import FilterSheet from '@/components/commerce/FilterSheet';
+import DepartmentSwitch from '@/components/commerce/DepartmentSwitch';
+import { inDepartment, isDepartment } from '@/lib/store/departments';
 
 const GRID = 'grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-14';
 
@@ -35,6 +37,8 @@ function CatalogContent() {
   // Filter state lives in the URL so views are linkable, survive a language
   // switch, and restore correctly on back/forward.
   const selectedCategory = searchParams.get('category') ?? 'all';
+  const genderParam = searchParams.get('gender');
+  const department = isDepartment(genderParam) ? genderParam : null;
   const query = searchParams.get('q') ?? '';
   const sortParam = searchParams.get('sort');
   const sort: SortOption = isSortOption(sortParam) ? sortParam : 'featured';
@@ -73,6 +77,7 @@ function CatalogContent() {
     const needle = query.trim().toLowerCase();
 
     const filtered = products.filter((p) => {
+      if (department && !inDepartment(p, department)) return false;
       if (selectedCategory !== 'all' && p.category?.slug !== selectedCategory) return false;
       // Every language is searched: a French term finds the product on /en too.
       return !needle || searchableText(p).includes(needle);
@@ -96,15 +101,19 @@ function CatalogContent() {
           return a.sort_order - b.sort_order;
       }
     });
-  }, [products, selectedCategory, query, sort, locale]);
+  }, [products, department, selectedCategory, query, sort, locale]);
 
-  const hasActiveFilters = selectedCategory !== 'all' || query !== '';
+  const hasActiveFilters = selectedCategory !== 'all' || query !== '' || department !== null;
   const activeCategory = categories.find((c) => c.slug === selectedCategory);
   const title = query
     ? t('resultsFor', { query })
     : activeCategory
-      ? categoryName(activeCategory, locale)
-      : t('title');
+      ? department
+        ? `${tNav(department)} · ${categoryName(activeCategory, locale)}`
+        : categoryName(activeCategory, locale)
+      : department
+        ? tNav(department)
+        : t('title');
   const subtitle = activeCategory ? localizedDescription(activeCategory, locale) || t('subtitle') : t('subtitle');
 
   const clearFilters = () => router.replace(pathname, { scroll: false });
@@ -116,9 +125,10 @@ function CatalogContent() {
           label={tNav('breadcrumb')}
           items={[
             { label: tNav('home'), href: `/${locale}` },
-            activeCategory
+            activeCategory || department
               ? { label: tNav('catalog'), href: `/${locale}/catalog` }
               : { label: tNav('catalog') },
+            ...(department && !activeCategory ? [{ label: tNav(department) }] : []),
             ...(activeCategory ? [{ label: categoryName(activeCategory, locale) }] : []),
           ]}
         />
@@ -127,6 +137,12 @@ function CatalogContent() {
           <h1 className="t-h1">{title}</h1>
           <p className="t-body mt-2">{subtitle}</p>
         </div>
+
+        <DepartmentSwitch
+          value={department}
+          onChange={(next) => setParam('gender', next)}
+          className="mt-6"
+        />
       </div>
 
       <div className="grid lg:grid-cols-[13rem_1fr] gap-x-12 pb-section">

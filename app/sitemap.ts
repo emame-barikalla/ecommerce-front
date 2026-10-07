@@ -5,7 +5,7 @@ import { getSitemapEntries } from '@/lib/utils/supabase-server';
 // Rebuilt at most hourly so new products are picked up without a deploy.
 export const revalidate = 3600;
 
-const STATIC_ROUTES = ['', '/catalog', '/why-choose-us', '/about', '/contact'];
+const STATIC_ROUTES = ['', '/catalog', '/categories', '/why-choose-us', '/about', '/contact'];
 
 /** One entry per locale, each listing its siblings as hreflang alternates. */
 function localized(path: string, extra: Partial<MetadataRoute.Sitemap[number]> = {}): MetadataRoute.Sitemap {

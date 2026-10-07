@@ -39,6 +39,11 @@ export type Availability = 'in_stock' | 'low_stock' | 'on_order' | 'out_of_stock
 
 export const AVAILABILITIES: Availability[] = ['in_stock', 'low_stock', 'on_order', 'out_of_stock'];
 
+/** Main storefront department. `unisex` products appear under both. */
+export type Gender = 'women' | 'men' | 'unisex';
+
+export const GENDERS: Gender[] = ['women', 'men', 'unisex'];
+
 export interface Product {
   id: string;
   store_id: string;
@@ -52,6 +57,11 @@ export interface Product {
   compare_at_price?: number | null;
   availability?: Availability | null;
   is_featured?: boolean;
+  // From p2_size_gender.sql — optional for the same reason as above.
+  /** Free text: `M`, `42`, `50 ML`… or a comma list (`41, 42, 43`). */
+  size?: string | null;
+  /** NULL = not assigned: the product is listed under both departments. */
+  gender?: Gender | null;
   created_at: string;
   updated_at: string;
 }

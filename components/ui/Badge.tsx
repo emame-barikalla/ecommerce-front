@@ -3,7 +3,7 @@ import { HTMLAttributes } from 'react';
 
 const variants = {
   neutral: 'bg-surface-sunken text-ink-secondary',
-  outline: 'bg-white/90 text-ink border border-line backdrop-blur-sm',
+  outline: 'bg-surface/90 text-ink border border-line backdrop-blur-sm',
   /** Reserved for markdowns — the only place loud red is allowed. */
   sale: 'bg-sale text-white',
   new: 'bg-ink text-ink-inverse',

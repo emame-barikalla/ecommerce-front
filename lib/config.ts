@@ -2,6 +2,9 @@ import type { Locale } from '@/lib/types/database';
 
 export const LOCALES: Locale[] = ['en', 'fr', 'ar'];
 
+/** Arabic is the storefront default: `/` redirects to `/ar`. */
+export const DEFAULT_LOCALE: Locale = 'ar';
+
 export function isLocale(value: string): value is Locale {
   return (LOCALES as string[]).includes(value);
 }
@@ -23,7 +26,7 @@ export const IMAGE_BUCKET = 'product-images';
 
 /** Language menu entries, each labelled in its own language. */
 export const LOCALE_OPTIONS: Array<{ code: Locale; label: string; short: string }> = [
-  { code: 'en', label: 'English', short: 'EN' },
+  { code: 'ar', label: 'العربية', short: 'ع' },
   { code: 'fr', label: 'Français', short: 'FR' },
-  { code: 'ar', label: 'العربية', short: 'AR' },
+  { code: 'en', label: 'English', short: 'EN' },
 ];

@@ -38,6 +38,7 @@ export function mapProduct(row: Row): ProductWithDetails {
     // DECIMAL columns arrive as strings from PostgREST in some setups.
     price: Number(rest.price),
     compare_at_price: rest.compare_at_price == null ? null : Number(rest.compare_at_price),
+    size: typeof rest.size === 'string' && rest.size.trim() ? rest.size.trim() : null,
     translations: byLocale<ProductTranslation>(translations),
     images: ((images as ProductImage[] | null) ?? []).slice(),
     category: category ? mapCategory(category as Row) : undefined,

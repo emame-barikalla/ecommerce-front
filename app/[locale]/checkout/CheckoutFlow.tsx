@@ -90,7 +90,9 @@ export default function CheckoutFlow() {
       ...orderableItems.map(
         (item) =>
           `${t('message.line', {
-            name: cartProductName(item.product, locale),
+            name: item.product.size
+              ? `${cartProductName(item.product, locale)} (${item.product.size})`
+              : cartProductName(item.product, locale),
             quantity: item.quantity,
             total: formatPrice(item.product.price * item.quantity),
           })}\n  ${SITE_URL}/${locale}/catalog/${item.product.slug}`
@@ -178,11 +180,6 @@ export default function CheckoutFlow() {
           action={
             <Link href={`/${locale}/catalog`} className={buttonStyles()}>
               {t('continueShopping')}
-            </Link>
-          }
-          secondaryAction={
-            <Link href={`/${locale}/orders/track`} className={buttonStyles({ variant: 'outline' })}>
-              {t('trackOrder')}
             </Link>
           }
         />

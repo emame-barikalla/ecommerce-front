@@ -1,4 +1,4 @@
-import { IBM_Plex_Sans_Arabic, Inter, Instrument_Serif, Noto_Kufi_Arabic } from 'next/font/google';
+import { El_Messiri, Inter, Instrument_Serif, Tajawal } from 'next/font/google';
 
 export const inter = Inter({
   subsets: ['latin', 'latin-ext'],
@@ -14,26 +14,25 @@ export const instrumentSerif = Instrument_Serif({
   display: 'swap',
 });
 
-// Arabic faces are not preloaded: browsers fetch a font only when its glyphs
-// are used, so English and French pages no longer download them at all.
+// Arabic is the default locale, so its faces are preloaded. Browsers still
+// fetch a font only when its glyphs are used on the page.
 
-/** Arabic body text — Plex pairs with Inter and stays legible at 15px. */
-export const plexArabic = IBM_Plex_Sans_Arabic({
-  subsets: ['arabic'],
-  weight: ['400', '500', '600'],
+/** Arabic body text — Tajawal is light, modern and stays legible at small sizes. */
+export const tajawal = Tajawal({
+  subsets: ['arabic', 'latin'],
+  weight: ['400', '500', '700'],
   variable: '--font-arabic',
   display: 'swap',
-  preload: false,
 });
 
-/** Arabic headings — Kufi's geometry echoes the Latin display face. */
-export const kufiArabic = Noto_Kufi_Arabic({
+/** Arabic headings — El Messiri's soft curves feel elegant without being traditional. */
+export const elMessiri = El_Messiri({
   subsets: ['arabic'],
+  weight: ['500', '600'],
   variable: '--font-arabic-display',
   display: 'swap',
-  preload: false,
 });
 
-export const fontVariables = [inter, instrumentSerif, plexArabic, kufiArabic]
+export const fontVariables = [inter, instrumentSerif, tajawal, elMessiri]
   .map((f) => f.variable)
   .join(' ');

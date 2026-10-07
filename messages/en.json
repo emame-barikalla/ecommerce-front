@@ -18,14 +18,23 @@
     "brandName": "España a Mauritania",
     "closeMenu": "Close menu",
     "categories": "Categories",
-    "information": "Information"
+    "information": "Information",
+    "women": "Women",
+    "men": "Men",
+    "newIn": "New in",
+    "shopAll": "Shop all",
+    "all": "All",
+    "favorites": "Favorites",
+    "account": "Account",
+    "tabBar": "Quick navigation",
+    "departments": "Department"
   },
   "announcement": {
     "whatsapp": "Order and get support directly on WhatsApp",
     "authentic": "100% authentic products, sourced in Spain",
     "dismiss": "Dismiss announcement",
     "freeDelivery": "Free delivery on orders over {amount}",
-    "delivery": "Delivery across Mauritania in {min}–{max} days"
+    "delivery": "In stock in Mauritania: delivered within {days, plural, one {1 day} other {# days}} · From Spain: {min}–{max} days"
   },
   "home": {
     "hero": {
@@ -70,6 +79,10 @@
       "submitting": "Subscribing…",
       "success": "Thank you for subscribing.",
       "error": "Please enter a valid email address."
+    },
+    "departments": {
+      "eyebrow": "Departments",
+      "title": "Shop Women & Men"
     }
   },
   "catalog": {
@@ -108,7 +121,6 @@
     "decrease": "Decrease quantity",
     "total": "Total",
     "askWhatsApp": "Ask on WhatsApp",
-    "deliveryEstimate": "Delivery {min}–{max} days from Spain",
     "relatedProducts": "You may also like",
     "viewAll": "View all",
     "galleryLabel": "Product images",
@@ -122,7 +134,14 @@
       "out_of_stock": "Out of stock"
     },
     "badgeSale": "−{percent}%",
-    "productWhatsApp": "Hello! I am interested in this product: {name}\n{url}"
+    "productWhatsApp": "Hello! I am interested in this product: {name}\n{url}",
+    "size": "Size",
+    "volume": "Volume",
+    "sizeOnWhatsApp": "Tell us your size on WhatsApp when you order.",
+    "orderWhatsApp": "Order on WhatsApp",
+    "orderShort": "Order",
+    "orderWhatsAppHint": "Orders are confirmed on WhatsApp — payment and delivery are agreed with you.",
+    "orderWhatsAppGreeting": "Hello! I would like to order this product:"
   },
   "cart": {
     "title": "Your cart",
@@ -137,7 +156,6 @@
     "decrease": "Decrease quantity",
     "subtotal": "Subtotal ({count, plural, one {# item} other {# items}})",
     "total": "Total",
-    "deliveryEstimate": "Estimated delivery {min}–{max} days from Spain.",
     "checkoutHint": "Review your order, then send it to us on WhatsApp.",
     "checkout": "Checkout",
     "close": "Close cart",
@@ -156,8 +174,7 @@
       },
       "delivery": {
         "question": "How long does delivery take?",
-        "answerWithDays": "Delivery usually takes {min}–{max} days from Spain to Mauritania. We confirm the exact timing on WhatsApp.",
-        "answer": "We confirm the delivery time for your city on WhatsApp when you order."
+        "answerWithDays": "Items already in Mauritania are delivered within {days, plural, one {1 day} other {# days}}. Items ordered from Spain take an estimated {min}–{max} days. Each product page shows which case applies, and we confirm the timing on WhatsApp."
       },
       "payment": {
         "question": "How do I pay?",
@@ -279,30 +296,11 @@
     "whatsappGreeting": "Hello! I have a question.",
     "allProducts": "All products",
     "help": "Help",
-    "trackOrder": "Track order",
     "followInstagram": "Follow us on Instagram",
     "followFacebook": "Follow us on Facebook",
     "rights": "All rights reserved.",
     "language": "Language",
     "followTiktok": "Follow us on TikTok"
-  },
-  "orders": {
-    "eyebrow": "Orders",
-    "trackTitle": "Track your order",
-    "trackDescription": "Enter the order reference from your WhatsApp confirmation.",
-    "orderRef": "Order reference",
-    "track": "Look up",
-    "invalidRef": "That doesn't look like a valid reference. It looks like ORD-XXXXX-XXXX.",
-    "checkOnWhatsApp": "Orders are confirmed and updated on WhatsApp. Send us this reference and we'll tell you exactly where it is.",
-    "askStatus": "Ask for a status update",
-    "whatsappMessage": "Hello! Could you tell me the status of my order {ref}?",
-    "lostRef": "Lost your reference? <link>Contact us</link> and we'll find it.",
-    "status": {
-      "received": "Order received",
-      "packed": "Being packed",
-      "shipped": "Shipped",
-      "delivered": "Delivered"
-    }
   },
   "notFound": {
     "title": "This page doesn't exist",
@@ -312,7 +310,19 @@
   },
   "wishlist": {
     "add": "Add to wishlist",
-    "remove": "Remove from wishlist"
+    "remove": "Remove from wishlist",
+    "title": "Favorites",
+    "subtitle": "The pieces you have saved, all in one place.",
+    "openWithCount": "Favorites, {count, plural, one {# item} other {# items}}",
+    "added": "Saved to favorites",
+    "removed": "Removed from favorites",
+    "view": "View",
+    "count": "{count, plural, one {# item} other {# items}}",
+    "emptyTitle": "No favorites yet",
+    "emptyDescription": "Tap the heart on any product to save it here. No account needed.",
+    "browse": "Discover products",
+    "errorTitle": "We couldn’t load your favorites.",
+    "retry": "Try again"
   },
   "recentlyViewed": {
     "title": "Recently viewed"
@@ -327,8 +337,8 @@
       "desc": "Ask questions and confirm every detail before you buy."
     },
     "delivery": {
-      "title": "Delivery across Mauritania",
-      "desc": "{min}–{max} days from Spain to your door."
+      "title": "Fast local delivery",
+      "desc": "{days, plural, one {1 day} other {# days}} for items in Mauritania, {min}–{max} days when ordered from Spain."
     },
     "deliveryConfirmed": {
       "title": "Delivery across Mauritania",
@@ -415,7 +425,6 @@
     "reopen": "Open WhatsApp again",
     "doneTitle": "Thank you",
     "doneDescription": "We’ll reply on WhatsApp to confirm your order. Keep your reference: {ref}.",
-    "trackOrder": "Track your order",
     "message": {
       "greeting": "Hello! I would like to place an order.",
       "ref": "Order reference: {ref}",
@@ -432,5 +441,41 @@
       "note": "Note: {value}",
       "closing": "Thank you!"
     }
+  },
+  "theme": {
+    "label": "Appearance",
+    "light": "Switch to light mode",
+    "dark": "Switch to dark mode",
+    "lightShort": "Light",
+    "darkShort": "Dark"
+  },
+  "account": {
+    "deviceNote": "No sign-up needed — your favorites and cart are saved on this device.",
+    "appearance": "Appearance"
+  },
+  "delivery": {
+    "localShort": "In Mauritania · {days, plural, one {1-day} other {#-day}} delivery",
+    "spainShort": "Order from Spain · {min}–{max} days",
+    "localTitle": "Available in Mauritania",
+    "localTime": "Delivery within {days, plural, one {1 day} other {# days}}",
+    "localHint": "Contact us on WhatsApp to confirm your order and arrange delivery.",
+    "spainTitle": "Available by order from Spain",
+    "spainTime": "Estimated delivery {min}–{max} days",
+    "spainHint": "We order it for you in Spain. Confirm the details with us on WhatsApp.",
+    "cartLocal": "All items are in Mauritania — delivery within {days, plural, one {1 day} other {# days}}.",
+    "cartSpain": "Ordered from Spain — estimated delivery {min}–{max} days.",
+    "cartMixed": "Some items are ordered from Spain — estimated delivery {min}–{max} days for those items."
+  },
+  "departments": {
+    "women": {
+      "kicker": "Beauty, bags & shoes",
+      "title": "Women"
+    },
+    "men": {
+      "kicker": "Fragrance, care & shoes",
+      "title": "Men"
+    },
+    "shop": "Shop now",
+    "byCategory": "Shop by category"
   }
 }

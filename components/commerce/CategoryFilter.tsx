@@ -46,7 +46,7 @@ export default function CategoryFilter({
               'shrink-0 h-9 px-4 rounded-full text-small border transition-colors',
               selected === o.slug
                 ? 'bg-ink text-ink-inverse border-ink'
-                : 'bg-white text-ink-secondary border-line hover:border-ink hover:text-ink'
+                : 'bg-surface text-ink-secondary border-line hover:border-ink hover:text-ink'
             )}
           >
             {o.name}

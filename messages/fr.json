@@ -18,14 +18,23 @@
     "brandName": "España a Mauritania",
     "closeMenu": "Fermer le menu",
     "categories": "Catégories",
-    "information": "Informations"
+    "information": "Informations",
+    "women": "Femme",
+    "men": "Homme",
+    "newIn": "Nouveautés",
+    "shopAll": "Tout voir",
+    "all": "Tout",
+    "favorites": "Favoris",
+    "account": "Compte",
+    "tabBar": "Navigation rapide",
+    "departments": "Rayon"
   },
   "announcement": {
     "whatsapp": "Commandez et posez vos questions directement sur WhatsApp",
     "authentic": "Produits 100 % authentiques, sourcés en Espagne",
     "dismiss": "Fermer l'annonce",
     "freeDelivery": "Livraison gratuite dès {amount} d’achat",
-    "delivery": "Livraison partout en Mauritanie en {min} à {max} jours"
+    "delivery": "En stock en Mauritanie : livré en {days, plural, one {1 jour} other {# jours}} · Depuis l’Espagne : {min}–{max} jours"
   },
   "home": {
     "hero": {
@@ -70,6 +79,10 @@
       "submitting": "Inscription…",
       "success": "Merci pour votre inscription.",
       "error": "Veuillez saisir une adresse e-mail valide."
+    },
+    "departments": {
+      "eyebrow": "Rayons",
+      "title": "Femme & Homme"
     }
   },
   "catalog": {
@@ -108,7 +121,6 @@
     "decrease": "Diminuer la quantité",
     "total": "Total",
     "askWhatsApp": "Demander sur WhatsApp",
-    "deliveryEstimate": "Livraison {min}–{max} jours depuis l'Espagne",
     "relatedProducts": "Vous aimerez aussi",
     "viewAll": "Tout voir",
     "galleryLabel": "Images du produit",
@@ -122,7 +134,14 @@
       "out_of_stock": "Rupture de stock"
     },
     "badgeSale": "−{percent} %",
-    "productWhatsApp": "Bonjour ! Ce produit m’intéresse : {name}\n{url}"
+    "productWhatsApp": "Bonjour ! Ce produit m’intéresse : {name}\n{url}",
+    "size": "Taille",
+    "volume": "Contenance",
+    "sizeOnWhatsApp": "Indiquez votre taille sur WhatsApp au moment de commander.",
+    "orderWhatsApp": "Commander sur WhatsApp",
+    "orderShort": "Commander",
+    "orderWhatsAppHint": "Les commandes sont confirmées sur WhatsApp — paiement et livraison convenus avec vous.",
+    "orderWhatsAppGreeting": "Bonjour ! Je souhaite commander ce produit :"
   },
   "cart": {
     "title": "Votre panier",
@@ -137,7 +156,6 @@
     "decrease": "Diminuer la quantité",
     "subtotal": "Sous-total ({count, plural, one {# article} other {# articles}})",
     "total": "Total",
-    "deliveryEstimate": "Livraison estimée {min}–{max} jours depuis l'Espagne.",
     "checkoutHint": "Vérifiez votre commande, puis envoyez-la-nous sur WhatsApp.",
     "checkout": "Passer la commande",
     "close": "Fermer le panier",
@@ -156,8 +174,7 @@
       },
       "delivery": {
         "question": "Combien de temps prend la livraison ?",
-        "answerWithDays": "La livraison prend généralement {min} à {max} jours depuis l’Espagne jusqu’en Mauritanie. Nous confirmons le délai exact sur WhatsApp.",
-        "answer": "Nous confirmons le délai de livraison pour votre ville sur WhatsApp au moment de la commande."
+        "answerWithDays": "Les articles déjà en Mauritanie sont livrés en {days, plural, one {1 jour} other {# jours}}. Les articles commandés en Espagne prennent environ {min}–{max} jours. Chaque fiche produit indique le cas qui s’applique, et nous confirmons le délai sur WhatsApp."
       },
       "payment": {
         "question": "Comment puis-je payer ?",
@@ -279,30 +296,11 @@
     "whatsappGreeting": "Bonjour ! J'ai une question.",
     "allProducts": "Tous les produits",
     "help": "Aide",
-    "trackOrder": "Suivre ma commande",
     "followInstagram": "Suivez-nous sur Instagram",
     "followFacebook": "Suivez-nous sur Facebook",
     "rights": "Tous droits réservés.",
     "language": "Langue",
     "followTiktok": "Suivez-nous sur TikTok"
-  },
-  "orders": {
-    "eyebrow": "Commandes",
-    "trackTitle": "Suivre votre commande",
-    "trackDescription": "Saisissez la référence figurant dans votre confirmation WhatsApp.",
-    "orderRef": "Référence de commande",
-    "track": "Rechercher",
-    "invalidRef": "Cette référence ne semble pas valide. Elle ressemble à ORD-XXXXX-XXXX.",
-    "checkOnWhatsApp": "Les commandes sont confirmées et suivies sur WhatsApp. Envoyez-nous cette référence et nous vous dirons précisément où elle en est.",
-    "askStatus": "Demander le statut",
-    "whatsappMessage": "Bonjour ! Pouvez-vous me donner le statut de ma commande {ref} ?",
-    "lostRef": "Référence perdue ? <link>Contactez-nous</link> et nous la retrouverons.",
-    "status": {
-      "received": "Commande reçue",
-      "packed": "En préparation",
-      "shipped": "Expédiée",
-      "delivered": "Livrée"
-    }
   },
   "notFound": {
     "title": "Cette page n'existe pas",
@@ -312,7 +310,19 @@
   },
   "wishlist": {
     "add": "Ajouter aux favoris",
-    "remove": "Retirer des favoris"
+    "remove": "Retirer des favoris",
+    "title": "Favoris",
+    "subtitle": "Les articles que vous avez enregistrés, réunis ici.",
+    "openWithCount": "Favoris, {count, plural, one {# article} other {# articles}}",
+    "added": "Ajouté aux favoris",
+    "removed": "Retiré des favoris",
+    "view": "Voir",
+    "count": "{count, plural, one {# article} other {# articles}}",
+    "emptyTitle": "Aucun favori pour le moment",
+    "emptyDescription": "Touchez le cœur sur un produit pour l’enregistrer ici. Aucun compte nécessaire.",
+    "browse": "Découvrir les produits",
+    "errorTitle": "Impossible de charger vos favoris.",
+    "retry": "Réessayer"
   },
   "recentlyViewed": {
     "title": "Vus récemment"
@@ -327,8 +337,8 @@
       "desc": "Posez vos questions et validez chaque détail avant d’acheter."
     },
     "delivery": {
-      "title": "Livraison en Mauritanie",
-      "desc": "{min} à {max} jours depuis l’Espagne jusqu’à chez vous."
+      "title": "Livraison locale rapide",
+      "desc": "{days, plural, one {1 jour} other {# jours}} pour les articles en Mauritanie, {min}–{max} jours sur commande d’Espagne."
     },
     "deliveryConfirmed": {
       "title": "Livraison en Mauritanie",
@@ -415,7 +425,6 @@
     "reopen": "Rouvrir WhatsApp",
     "doneTitle": "Merci",
     "doneDescription": "Nous vous répondrons sur WhatsApp pour confirmer votre commande. Conservez votre référence : {ref}.",
-    "trackOrder": "Suivre ma commande",
     "message": {
       "greeting": "Bonjour ! Je souhaite passer une commande.",
       "ref": "Référence : {ref}",
@@ -432,5 +441,41 @@
       "note": "Remarque : {value}",
       "closing": "Merci !"
     }
+  },
+  "theme": {
+    "label": "Apparence",
+    "light": "Passer en mode clair",
+    "dark": "Passer en mode sombre",
+    "lightShort": "Clair",
+    "darkShort": "Sombre"
+  },
+  "account": {
+    "deviceNote": "Aucune inscription nécessaire — vos favoris et votre panier sont enregistrés sur cet appareil.",
+    "appearance": "Apparence"
+  },
+  "delivery": {
+    "localShort": "En Mauritanie · livraison {days, plural, one {en 1 jour} other {en # jours}}",
+    "spainShort": "Commande d’Espagne · {min}–{max} jours",
+    "localTitle": "Disponible en Mauritanie",
+    "localTime": "Livraison en {days, plural, one {1 jour} other {# jours}}",
+    "localHint": "Contactez-nous sur WhatsApp pour confirmer la commande et organiser la livraison.",
+    "spainTitle": "Disponible sur commande depuis l’Espagne",
+    "spainTime": "Livraison estimée en {min}–{max} jours",
+    "spainHint": "Nous le commandons pour vous en Espagne. Confirmez les détails avec nous sur WhatsApp.",
+    "cartLocal": "Tous les articles sont en Mauritanie — livraison en {days, plural, one {1 jour} other {# jours}}.",
+    "cartSpain": "Commandé depuis l’Espagne — livraison estimée en {min}–{max} jours.",
+    "cartMixed": "Certains articles sont commandés en Espagne — livraison estimée en {min}–{max} jours pour ceux-ci."
+  },
+  "departments": {
+    "women": {
+      "kicker": "Beauté, sacs & chaussures",
+      "title": "Femme"
+    },
+    "men": {
+      "kicker": "Parfums, soins & chaussures",
+      "title": "Homme"
+    },
+    "shop": "Découvrir",
+    "byCategory": "Par catégorie"
   }
 }

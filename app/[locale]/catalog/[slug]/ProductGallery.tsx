@@ -150,7 +150,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
                 onClick={() => step(-1)}
                 disabled={active === 0}
                 aria-label={t('previousImage')}
-                className="absolute start-3 top-1/2 -translate-y-1/2 grid place-items-center w-9 h-9 rounded-full bg-white/90 text-ink opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity disabled:opacity-0"
+                className="absolute start-3 top-1/2 -translate-y-1/2 grid place-items-center w-9 h-9 rounded-full bg-surface/90 text-ink opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity disabled:opacity-0"
               >
                 <ChevronLeft size={17} aria-hidden="true" className="rtl:-scale-x-100" />
               </button>
@@ -158,7 +158,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
                 onClick={() => step(1)}
                 disabled={active === sorted.length - 1}
                 aria-label={t('nextImage')}
-                className="absolute end-3 top-1/2 -translate-y-1/2 grid place-items-center w-9 h-9 rounded-full bg-white/90 text-ink opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity disabled:opacity-0"
+                className="absolute end-3 top-1/2 -translate-y-1/2 grid place-items-center w-9 h-9 rounded-full bg-surface/90 text-ink opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity disabled:opacity-0"
               >
                 <ChevronRight size={17} aria-hidden="true" className="rtl:-scale-x-100" />
               </button>

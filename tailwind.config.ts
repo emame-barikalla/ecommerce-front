@@ -5,6 +5,8 @@ import type { Config } from 'tailwindcss';
  * a component is a design-system bug — extend the token set instead.
  */
 const config: Config = {
+  // Toggled by the theme boot script / ThemeToggle on <html>.
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -43,12 +45,15 @@ const config: Config = {
         sale: 'rgb(var(--sale-rgb) / <alpha-value>)',
         whatsapp: { DEFAULT: 'rgb(var(--whatsapp-rgb) / <alpha-value>)', hover: 'rgb(var(--whatsapp-hover-rgb) / <alpha-value>)' },
         background: 'rgb(var(--bg-rgb) / <alpha-value>)',
+        /** Image scrims and modal backdrops — dark in both themes. */
+        scrim: 'rgb(var(--scrim-rgb) / <alpha-value>)',
         foreground: 'rgb(var(--ink-rgb) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'var(--font-sans)', 'Georgia', 'serif'],
         arabic: ['var(--font-arabic)', 'system-ui', 'sans-serif'],
+        'arabic-display': ['var(--font-arabic-display)', 'var(--font-arabic)', 'serif'],
       },
       /**
        * UI text scale. `caption` (12px) is the floor for readable text;
@@ -80,6 +85,7 @@ const config: Config = {
       },
       spacing: {
         header: 'var(--header-h)',
+        'bottom-nav': 'var(--bottom-nav-h)',
         section: '5rem',
         'section-lg': '7rem',
       },
@@ -88,6 +94,7 @@ const config: Config = {
       },
       zIndex: {
         header: '50',
+        'bottom-nav': '55',
         overlay: '60',
         drawer: '70',
         toast: '80',

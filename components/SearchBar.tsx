@@ -86,7 +86,7 @@ function SearchForm({
         placeholder={t('searchPlaceholder')}
         className={cn(
           'field ps-9 pe-10 h-11 lg:h-10 rounded-md bg-surface-subtle border-transparent hover:border-line',
-          'focus:bg-white [&::-webkit-search-cancel-button]:hidden',
+          'focus:bg-surface [&::-webkit-search-cancel-button]:hidden',
           variant === 'expand' && 'w-48 focus:w-64 transition-[width] duration-300 ease-out'
         )}
       />

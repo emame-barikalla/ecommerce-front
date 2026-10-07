@@ -8,7 +8,7 @@ import { ImageOff, ShoppingBag, X } from 'lucide-react';
 import { useCartContext } from '@/lib/context/CartContext';
 import { useStoreSettings } from '@/lib/context/StoreSettingsContext';
 import { cartProductName, type CartIssue, type CartItem } from '@/lib/hooks/useCart';
-import { hasDeliveryEstimate } from '@/lib/store/settings-schema';
+import { LOCAL_DELIVERY_DAYS, deliverySource, spainDeliveryDays } from '@/lib/store/delivery';
 import type { Locale } from '@/lib/types/database';
 import { cn } from '@/lib/utils/cn';
 import Drawer from './ui/Drawer';
@@ -65,11 +65,10 @@ export default function Cart({ isOpen, onClose }: CartProps) {
                 <span className="text-small text-ink-secondary">{t('subtotal', { count: totalItems })}</span>
                 <span className="text-lg font-medium tabular text-ink">{formatPrice(subtotal)}</span>
               </div>
-              {hasDeliveryEstimate(settings) && (
-                <p className="text-caption text-ink-tertiary">
-                  {t('deliveryEstimate', { min: settings.deliveryDaysMin, max: settings.deliveryDaysMax })}
-                </p>
-              )}
+              <CartDelivery
+                sources={cart.map((i) => deliverySource(i.product.availability))}
+                spain={spainDeliveryDays(settings)}
+              />
               <Link
                 href={`/${locale}/checkout`}
                 onClick={onClose}
@@ -124,6 +123,30 @@ export default function Cart({ isOpen, onClose }: CartProps) {
         tone="danger"
       />
     </>
+  );
+}
+
+/** Spain timing appears only when at least one item is ordered from Spain. */
+function CartDelivery({
+  sources,
+  spain,
+}: {
+  sources: Array<'local' | 'spain' | null>;
+  spain: { min: number; max: number };
+}) {
+  const t = useTranslations('delivery');
+  const hasSpain = sources.includes('spain');
+  const hasLocal = sources.includes('local');
+  if (!hasSpain && !hasLocal) return null;
+  const message = !hasSpain
+    ? t('cartLocal', { days: LOCAL_DELIVERY_DAYS })
+    : hasLocal
+      ? t('cartMixed', spain)
+      : t('cartSpain', spain);
+  return (
+    <p className={cn('text-caption rounded-md px-3 py-2', hasSpain ? 'bg-accent-subtle text-ink-secondary' : 'bg-success-subtle text-success')}>
+      {message}
+    </p>
   );
 }
 
@@ -190,7 +213,15 @@ export function CartLine({ item, issue, locale, onNavigate, onRemove, onQuantity
           </IconButton>
         </div>
 
-        <p className="mt-0.5 text-caption text-ink-tertiary tabular">{formatPrice(product.price)}</p>
+        <p className="mt-0.5 text-caption text-ink-tertiary tabular">
+          {formatPrice(product.price)}
+          {product.size && (
+            <>
+              {' · '}
+              <bdi dir="ltr">{product.size}</bdi>
+            </>
+          )}
+        </p>
         {issue && (
           <p className={cn('mt-1 text-caption font-medium', unavailable ? 'text-error' : 'text-accent')}>
             {unavailable ? t('unavailable') : t('priceChanged')}

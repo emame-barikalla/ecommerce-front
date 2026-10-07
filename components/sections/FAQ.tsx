@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Plus } from 'lucide-react';
 import { getStoreSettings } from '@/lib/utils/supabase-server';
-import { hasDeliveryEstimate } from '@/lib/store/settings-schema';
+import { LOCAL_DELIVERY_DAYS, spainDeliveryDays } from '@/lib/store/delivery';
 
 /**
  * Built on native `<details>`: keyboard support, screen-reader semantics and
@@ -18,9 +18,7 @@ export default async function FAQ() {
       : null,
     {
       key: 'delivery',
-      answer: hasDeliveryEstimate(settings)
-        ? t('items.delivery.answerWithDays', { min: settings.deliveryDaysMin, max: settings.deliveryDaysMax })
-        : t('items.delivery.answer'),
+      answer: t('items.delivery.answerWithDays', { days: LOCAL_DELIVERY_DAYS, ...spainDeliveryDays(settings) }),
     },
     { key: 'payment', answer: t('items.payment.answer') },
     settings.returnDays

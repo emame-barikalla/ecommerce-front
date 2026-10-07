@@ -33,7 +33,7 @@ export default function QuantityStepper({
 
   return (
     <div
-      className={cn('inline-flex items-center rounded-md border border-line bg-white', className)}
+      className={cn('inline-flex items-center rounded-md border border-line bg-surface', className)}
     >
       <button
         type="button"

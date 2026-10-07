@@ -44,7 +44,7 @@ export default function Dialog({
 
   return (
     <div className="fixed inset-0 z-drawer flex items-end sm:items-center justify-center sm:p-6">
-      <div aria-hidden="true" onClick={onClose} className="absolute inset-0 bg-ink/30 animate-fade-in" />
+      <div aria-hidden="true" onClick={onClose} className="absolute inset-0 bg-scrim/45 animate-fade-in" />
       <div
         ref={panelRef}
         role="dialog"
@@ -52,7 +52,7 @@ export default function Dialog({
         aria-labelledby={titleId}
         aria-describedby={description ? descriptionId : undefined}
         className={cn(
-          'relative flex flex-col w-full max-h-[92vh] bg-white shadow-overlay',
+          'relative flex flex-col w-full max-h-[92vh] bg-surface shadow-overlay',
           'rounded-t-xl sm:rounded-lg animate-rise',
           widths[size]
         )}

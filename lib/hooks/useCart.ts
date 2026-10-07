@@ -17,6 +17,8 @@ export interface CartProduct {
   price: number;
   compareAtPrice: number | null;
   availability: Availability | null;
+  /** Optional size / volume label (absent in carts saved before it existed). */
+  size?: string | null;
   names: Partial<Record<Locale, string>>;
   image: { url: string; alt: string | null } | null;
 }
@@ -44,6 +46,7 @@ export function toCartProduct(product: ProductWithDetails): CartProduct {
     price: product.price,
     compareAtPrice: product.compare_at_price ?? null,
     availability: product.availability ?? null,
+    size: product.size ?? null,
     names,
     image: image ? { url: image.image_url, alt: image.alt_text ?? null } : null,
   };

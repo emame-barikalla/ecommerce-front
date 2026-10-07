@@ -9,7 +9,8 @@ import { LOCALE_OPTIONS } from '@/lib/config';
 import WithSearchParams, { localeHref } from './WithSearchParams';
 
 /**
- * Desktop language menu. Options are real links (with `hreflang`) that keep
+ * Language menu, shared by desktop and mobile: a globe icon (plus the current
+ * code from `lg` up, where there is room) opening the same list. Options are real links (with `hreflang`) that keep
  * the current path and query, so a filtered catalog survives the switch. A
  * disclosure pattern rather than an ARIA menu keeps plain Tab navigation.
  */
@@ -45,16 +46,19 @@ export default function LanguageSwitcher() {
         aria-expanded={open}
         aria-controls={listId}
         aria-label={`${t('language')}: ${current.label}`}
-        className="inline-flex items-center gap-1.5 h-11 px-2.5 rounded-md text-small font-medium text-ink-secondary hover:text-ink hover:bg-surface-sunken transition-colors"
+        title={t('language')}
+        className="inline-flex items-center justify-center gap-1.5 h-11 min-w-11 px-2.5 rounded-md text-small font-medium text-ink-secondary hover:text-ink hover:bg-surface-sunken transition-colors"
       >
-        <Globe size={16} aria-hidden="true" strokeWidth={1.75} />
-        <span aria-hidden="true">{current.short}</span>
+        <Globe size={19} aria-hidden="true" strokeWidth={1.6} />
+        <span aria-hidden="true" className="hidden lg:inline">
+          {current.short}
+        </span>
       </button>
 
       {open && (
         <ul
           id={listId}
-          className="absolute end-0 top-full mt-1 min-w-[10rem] rounded-lg border border-line bg-white shadow-lg p-1 z-drawer animate-fade-in"
+          className="absolute end-0 top-full mt-1 min-w-[10rem] rounded-lg border border-line bg-surface shadow-lg p-1.5 z-drawer animate-fade-in"
         >
           <WithSearchParams
             render={(params) =>

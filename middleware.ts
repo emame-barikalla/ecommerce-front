@@ -3,9 +3,12 @@ import createIntlMiddleware from 'next-intl/middleware';
 import { createServerClient } from '@supabase/ssr';
 
 const intlMiddleware = createIntlMiddleware({
-  locales: ['en', 'fr', 'ar'],
-  defaultLocale: 'en',
+  locales: ['ar', 'fr', 'en'],
+  defaultLocale: 'ar',
   localePrefix: 'always',
+  // Arabic is the default for everyone: the browser language does not
+  // redirect away from it. Visitors switch with the language menu.
+  localeDetection: false,
 });
 
 /**

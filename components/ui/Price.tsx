@@ -2,18 +2,25 @@ import { cn } from '@/lib/utils/cn';
 import { CURRENCY } from '@/lib/config';
 
 /**
- * Fixed grouping with a currency suffix. Arabic renders Western digits
- * deliberately — Mauritanian storefronts price in Western numerals.
+ * Clean MRU prices: `1500 MRU`, never `1,500.00 MRU`. Decimals appear only
+ * when a price really has them (`99.50 MRU`). Amounts of five digits and up
+ * are grouped with a narrow space (`12 500 MRU`) so they stay scannable.
+ * Arabic renders Western digits deliberately — Mauritanian storefronts price
+ * in Western numerals.
  *
  * Wrapped in invisible Unicode isolates (LRI … PDI): inside Arabic text the
- * bidi algorithm would otherwise reorder it to "MRU 500.00". This works in
+ * bidi algorithm would otherwise reorder it to "MRU 1500". This works in
  * every context, including plain-text WhatsApp messages and toasts.
  */
 export function formatPrice(value: number): string {
+  const whole = Math.round(value * 100) % 100 === 0;
   const amount = new Intl.NumberFormat('en-US', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(value);
+    minimumFractionDigits: whole ? 0 : 2,
+    maximumFractionDigits: whole ? 0 : 2,
+    useGrouping: Math.abs(value) >= 10_000,
+  })
+    .format(value)
+    .replace(/,/g, ' ');
   return `⁦${amount} ${CURRENCY}⁩`;
 }
 
@@ -44,8 +51,8 @@ export default function Price({ value, compareAt, size = 'md', className }: Pric
 
   return (
     <p className={cn('flex flex-wrap items-baseline gap-x-2.5 tabular', className)}>
-      {/* <bdi> keeps "1,200.00 MRU" in one piece inside Arabic text */}
-      <bdi className={cn('font-medium', s.current, onSale ? 'text-sale' : 'text-ink')}>{formatPrice(value)}</bdi>
+      {/* <bdi> keeps "1500 MRU" in one piece inside Arabic text */}
+      <bdi className={cn('font-semibold', s.current, onSale ? 'text-sale' : 'text-ink')}>{formatPrice(value)}</bdi>
       {onSale && (
         <s className={cn('text-ink-tertiary', s.compare)}>
           <bdi>{formatPrice(compareAt as number)}</bdi>

@@ -16,10 +16,18 @@ import {
   validateImage,
   type ProductInput,
 } from '@/lib/admin/api';
-import { AVAILABILITY_LABELS } from '@/lib/admin/labels';
+import { AVAILABILITY_LABELS, GENDER_LABELS } from '@/lib/admin/labels';
 import { LOCALES } from '@/lib/config';
 import { categoryName, sortImages } from '@/lib/i18n/localize';
-import { AVAILABILITIES, type Availability, type CategoryWithDetails, type Locale, type ProductImage } from '@/lib/types/database';
+import {
+  AVAILABILITIES,
+  GENDERS,
+  type Availability,
+  type CategoryWithDetails,
+  type Gender,
+  type Locale,
+  type ProductImage,
+} from '@/lib/types/database';
 import PageHeader from '@/components/admin/PageHeader';
 import LocaleTabs from '@/components/admin/LocaleTabs';
 import ImageManager, { PendingImages } from '@/components/admin/ImageManager';
@@ -43,6 +51,10 @@ interface FormState {
   compareAt: string;
   /** Empty string = not specified (nothing shown on the storefront). */
   availability: Availability | '';
+  /** Optional size / volume — empty when not relevant. */
+  size: string;
+  /** Empty string = not assigned (listed under both departments). */
+  gender: Gender | '';
   categoryId: string;
   sortOrder: string;
   isFeatured: boolean;
@@ -55,6 +67,8 @@ const INITIAL: FormState = {
   price: '',
   compareAt: '',
   availability: '',
+  size: '',
+  gender: '',
   categoryId: '',
   sortOrder: '0',
   isFeatured: false,
@@ -105,6 +119,8 @@ export default function ProductEditor({ productId }: { productId: string | null 
           price: String(product.price),
           compareAt: product.compare_at_price ? String(product.compare_at_price) : '',
           availability: product.availability ?? '',
+          size: product.size ?? '',
+          gender: product.gender ?? '',
           categoryId: product.category_id ?? '',
           sortOrder: String(product.sort_order ?? 0),
           isFeatured: !!product.is_featured,
@@ -172,6 +188,8 @@ export default function ProductEditor({ productId }: { productId: string | null 
           price: Number(form.price),
           compareAtPrice: form.compareAt.trim() ? Number(form.compareAt) : null,
           availability: form.availability || null,
+          size: form.size.trim() || null,
+          gender: form.gender || null,
           categoryId: form.categoryId || null,
           sortOrder: Number(form.sortOrder),
           isFeatured: form.isFeatured,
@@ -355,12 +373,27 @@ export default function ProductEditor({ productId }: { productId: string | null 
                   onChange={(e) => update('compareAt', e.target.value)}
                 />
               </Field>
-              <Field label="Disponibilité" hint="Affichée sur la fiche produit. « Rupture » empêche l’ajout au panier.">
+              <Field
+                label="Taille / Contenance"
+                hint="Facultatif. Ex. : M (sac), 42 (chaussures), 50 ML (soin). Plusieurs valeurs : 41, 42, 43."
+              >
+                <Input
+                  value={form.size}
+                  maxLength={60}
+                  dir="ltr"
+                  placeholder="M · 42 · 50 ML"
+                  onChange={(e) => update('size', e.target.value)}
+                />
+              </Field>
+              <Field
+                label="Disponibilité"
+                hint="En stock = déjà en Mauritanie (livraison en 1 jour). Sur commande ou non précisée = commandé en Espagne (délai Espagne affiché). « Rupture » empêche l’ajout au panier."
+              >
                 <Select
                   value={form.availability}
                   onChange={(e) => update('availability', e.target.value as Availability | '')}
                 >
-                  <option value="">Non précisée (rien n’est affiché)</option>
+                  <option value="">Non précisée (commande depuis l’Espagne)</option>
                   {AVAILABILITIES.map((a) => (
                     <option key={a} value={a}>
                       {AVAILABILITY_LABELS[a]}
@@ -376,6 +409,16 @@ export default function ProductEditor({ productId }: { productId: string | null 
               Organisation
             </h2>
             <div className="space-y-4">
+              <Field label="Rayon" hint="Femme ou Homme — la navigation principale de la boutique.">
+                <Select value={form.gender} onChange={(e) => update('gender', e.target.value as Gender | '')}>
+                  <option value="">Non précisé (affiché dans les deux rayons)</option>
+                  {GENDERS.map((g) => (
+                    <option key={g} value={g}>
+                      {GENDER_LABELS[g]}
+                    </option>
+                  ))}
+                </Select>
+              </Field>
               <Field label="Catégorie">
                 <Select value={form.categoryId} onChange={(e) => update('categoryId', e.target.value)}>
                   <option value="">Sans catégorie</option>

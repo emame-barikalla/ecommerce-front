@@ -10,7 +10,6 @@ import {
 } from '@/lib/utils/supabase-server';
 import { categoryName, localizedDescription, localizedName, sortImages } from '@/lib/i18n/localize';
 import { getTrustItems, type TrustKey } from '@/lib/store/trust';
-import { hasDeliveryEstimate } from '@/lib/store/settings-schema';
 import { SCHEMA_AVAILABILITY, breadcrumbJsonLd, jsonLdScript, localizedAlternates } from '@/lib/seo';
 import { CURRENCY, SITE_URL } from '@/lib/config';
 import type { Locale } from '@/lib/types/database';
@@ -19,6 +18,7 @@ import Price, { formatPrice } from '@/components/ui/Price';
 import ProductCard from '@/components/ProductCard';
 import SectionHeading from '@/components/ui/SectionHeading';
 import RecentlyViewed from '@/components/sections/RecentlyViewed';
+import DeliveryInfo from '@/components/DeliveryInfo';
 import ProductActions from './ProductActions';
 import ProductGallery from './ProductGallery';
 import ProductViewTracker from './ProductViewTracker';
@@ -84,7 +84,10 @@ export default async function ProductPage({ params: { locale, slug } }: Params) 
   const name = localizedName(product, lang, slug);
   const description = localizedDescription(product, lang);
   const category = product.category ? categoryName(product.category, lang) : '';
-  const trust = getTrustItems(settings, formatPrice);
+  // Delivery has its own, product-specific block above — no generic line here.
+  const trust = getTrustItems(settings, formatPrice).filter(
+    (item) => item.key !== 'delivery' && item.key !== 'deliveryConfirmed'
+  );
   const url = `/${locale}/catalog/${product.slug}`;
 
   const crumbs = [
@@ -119,7 +122,7 @@ export default async function ProductPage({ params: { locale, slug } }: Params) 
   ];
 
   return (
-    <div className="container-page pb-[6rem] lg:pb-0">
+    <div className="container-page pb-[calc(6rem+env(safe-area-inset-bottom))] lg:pb-0">
       <ProductViewTracker productId={product.id} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(jsonLd)} />
 
@@ -139,11 +142,7 @@ export default async function ProductPage({ params: { locale, slug } }: Params) 
           <h1 className="t-h1">{name}</h1>
           <Price value={product.price} compareAt={product.compare_at_price} size="lg" className="mt-4" />
 
-          {hasDeliveryEstimate(settings) && (
-            <p className="mt-3 text-small text-ink-secondary">
-              {t('deliveryEstimate', { min: settings.deliveryDaysMin, max: settings.deliveryDaysMax })}
-            </p>
-          )}
+          <DeliveryInfo availability={product.availability} className="mt-5" />
 
           <div className="mt-7 pt-7 border-t border-line">
             <ProductActions product={product} productUrl={`${SITE_URL}${url}`} />
