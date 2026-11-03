@@ -17,9 +17,13 @@ export function inDepartment(product: Pick<Product, 'gender'>, department: Depar
   return !product.gender || product.gender === 'unisex' || product.gender === department;
 }
 
-/** Editorial imagery per department. `null` renders a typographic panel. */
-export const DEPARTMENT_IMAGES: Record<Department, string | null> = {
-  women: '/assets/makeup.jpg',
-  // Add a menswear photo to /public/assets and reference it here.
-  men: null,
+/**
+ * Editorial imagery per department: a matched pair (same sandstone street,
+ * warm light, cream and camel styling) so the two tiles read as one brand.
+ * `position` is the focal point kept in frame when a tile crops the portrait
+ * photo to landscape on larger screens.
+ */
+export const DEPARTMENT_IMAGES: Record<Department, { src: string; position: string } | null> = {
+  women: { src: '/assets/brand/women.jpg', position: '50% 15%' },
+  men: { src: '/assets/brand/men.jpg', position: '50% 12%' },
 };

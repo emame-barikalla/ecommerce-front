@@ -85,7 +85,9 @@ export default function Navbar({
       <nav aria-label={t('primary')} className="container-page">
         <div className="flex items-center gap-1 md:gap-3 h-header">
           <Link href={`/${locale}`} className="flex items-center gap-2.5 h-11 min-w-0 lg:shrink-0 lg:me-8">
-            <Image src="/assets/logo_shop.svg" alt="" width={30} height={30} priority className="shrink-0 rounded-xs" />
+            {/* Burgundy emblem on light, a lighter rose on dark so it keeps contrast */}
+            <Image src="/assets/brand/logo-mark.png" alt="" width={33} height={30} priority className="shrink-0 dark:hidden" />
+            <Image src="/assets/brand/logo-mark-dark.png" alt="" width={33} height={30} priority className="shrink-0 hidden dark:block" />
             {/* dir=auto: a Latin store name truncates at its own end, even on /ar */}
             <span dir="auto" className="font-display text-lg leading-none tracking-[-0.01em] text-ink whitespace-nowrap truncate">
               {storeName}

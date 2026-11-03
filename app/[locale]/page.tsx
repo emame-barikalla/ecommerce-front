@@ -23,6 +23,7 @@ import Newsletter from '@/components/sections/Newsletter';
 import FAQ from '@/components/sections/FAQ';
 import RecentlyViewed from '@/components/sections/RecentlyViewed';
 import DepartmentTiles from '@/components/sections/DepartmentTiles';
+import Hero, { HERO_IMAGE } from '@/components/sections/Hero';
 import { CATEGORY_IMAGES, FALLBACK_CATEGORY_IMAGE } from '@/lib/store/category-images';
 
 type Params = { params: { locale: string } };
@@ -34,10 +35,9 @@ export async function generateMetadata({ params: { locale } }: Params): Promise<
     title: { absolute: `${(await getStoreSettings()).storeName} — ${t('hero.title')}` },
     description: t('hero.subtitle'),
     alternates: localizedAlternates(locale),
-    openGraph: { title: t('hero.title'), description: t('hero.subtitle'), locale, images: ['/assets/hero5.jpg'] },
+    openGraph: { title: t('hero.title'), description: t('hero.subtitle'), locale, images: [HERO_IMAGE] },
   };
 }
-
 
 const GRID = 'grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-14';
 
@@ -59,7 +59,7 @@ export default async function HomePage({ params: { locale } }: Params) {
     '@type': 'Organization',
     name: settings.storeName,
     url: `${SITE_URL}/${locale}`,
-    logo: `${SITE_URL}/assets/logo_shop.png`,
+    logo: `${SITE_URL}/assets/brand/logo.png`,
     ...(settings.contactEmail ? { email: settings.contactEmail } : {}),
     sameAs: [settings.instagramUrl, settings.facebookUrl, settings.tiktokUrl].filter(Boolean),
   };
@@ -68,39 +68,7 @@ export default async function HomePage({ params: { locale } }: Params) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(organization)} />
 
-      {/* ---------------------------------------------------------------- HERO */}
-      {/* min-height, not a fixed height: the hero grows with its copy, so the
-          longer Arabic headline can never push the badge out of view. */}
-      <section className="relative isolate flex min-h-[34rem] md:min-h-[min(46rem,calc(100svh-var(--header-h)-var(--announcement-h)-3rem))] overflow-hidden">
-        <Image src="/assets/hero5.jpg" alt="" fill priority sizes="100vw" className="-z-10 object-cover" />
-        {/* Two scrims: a bottom fade for the CTA row and a side fade behind the
-            text (mirrored under RTL), so copy stays legible on light photos. */}
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-scrim/80 via-scrim/30 to-scrim/5" />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-gradient-to-r rtl:bg-gradient-to-l from-scrim/60 via-scrim/20 to-transparent md:via-transparent"
-        />
-
-        <div className="container-page flex items-end w-full pt-24 pb-12 md:pb-20">
-          <div className="w-full max-w-2xl animate-rise">
-            <p className="inline-flex max-w-full items-center gap-2 mb-5 rounded-full border border-white/25 bg-white/10 backdrop-blur-md px-4 py-1.5 text-small font-medium leading-relaxed text-white whitespace-normal">
-              <span aria-hidden="true" className="w-1.5 h-1.5 shrink-0 rounded-full bg-[#e9b9c3]" />
-              {t('hero.badge')}
-            </p>
-            <h1 className="t-display text-white">{t('hero.title')}</h1>
-            <p className="mt-5 text-base md:text-lg text-white/90 max-w-lg leading-relaxed">{t('hero.subtitle')}</p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link href={`/${locale}/catalog`} className={buttonStyles({ variant: 'inverse', size: 'lg' })}>
-                {t('hero.cta')}
-                <ArrowRight size={16} aria-hidden="true" className="rtl:-scale-x-100" />
-              </Link>
-              <Link href={`/${locale}/why-choose-us`} className={buttonStyles({ variant: 'outlineInverse', size: 'lg' })}>
-                {t('hero.learnMore')}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero locale={locale} />
 
       <TrustStrip label={t('benefits.title')} className="container-page py-9 md:py-11 border-b border-line" />
 
@@ -178,7 +146,7 @@ export default async function HomePage({ params: { locale } }: Params) {
         <div className="relative overflow-hidden rounded-lg bg-surface-inverse">
           <div className="grid md:grid-cols-2 items-stretch">
             <div className="relative min-h-[15rem] md:min-h-[24rem] order-first md:order-last">
-              <Image src="/assets/hero4.jpg" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+              <Image src="/assets/brand/promo.jpg" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
             </div>
             <div className="flex flex-col justify-center p-7 md:p-14 lg:p-16">
               <p className="t-label !text-white/70 mb-4">{t('promo.badge')}</p>
