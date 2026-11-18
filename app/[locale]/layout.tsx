@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { Analytics } from '@vercel/analytics/next';
 import '../globals.css';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -106,6 +107,7 @@ export default async function LocaleLayout({
             </CartProvider>
           </StoreSettingsProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
