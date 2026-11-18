@@ -29,7 +29,8 @@ export default async function DepartmentTiles({ locale, className }: { locale: s
             {image ? (
               <>
                 <Image
-                  src={image}
+                  src={image.src}
+                  style={{ objectPosition: image.position }}
                   alt=""
                   fill
                   sizes="(max-width: 768px) 50vw, 45vw"

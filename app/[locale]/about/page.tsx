@@ -41,7 +41,7 @@ export default async function AboutPage({ params: { locale } }: Params) {
       <section className="container-page grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
         <div className="relative aspect-editorial rounded-lg overflow-hidden bg-surface-sunken">
           <Image
-            src="/assets/about-image.jpg"
+            src="/assets/about-image1.jpg"
             alt=""
             fill
             priority

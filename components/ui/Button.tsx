@@ -14,6 +14,9 @@ const variants = {
   inverse: 'bg-white text-[#1f1a1b] hover:bg-[#f8f3ef]',
   /** Secondary action on imagery or dark panels. */
   outlineInverse: 'bg-scrim/20 text-white border border-white/70 hover:border-white hover:bg-white/10',
+  /** Primary / secondary actions over light photography (fixed colours). */
+  onLight: 'bg-hero-ink text-white hover:bg-hero-ink/85',
+  outlineOnLight: 'bg-white/45 text-hero-ink border border-hero-ink/25 backdrop-blur-sm hover:border-hero-ink hover:bg-white/70',
   danger: 'bg-error text-white hover:brightness-110',
 };
 

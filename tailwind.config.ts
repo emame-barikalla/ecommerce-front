@@ -45,6 +45,17 @@ const config: Config = {
         sale: 'rgb(var(--sale-rgb) / <alpha-value>)',
         whatsapp: { DEFAULT: 'rgb(var(--whatsapp-rgb) / <alpha-value>)', hover: 'rgb(var(--whatsapp-hover-rgb) / <alpha-value>)' },
         background: 'rgb(var(--bg-rgb) / <alpha-value>)',
+        /**
+         * Hero photography is light in both themes, so its overlay copy uses
+         * fixed colours sampled from the photo rather than theme tokens.
+         */
+        hero: {
+          // Sampled from the cream wall/floor of the still-life hero photos.
+          tint: 'rgb(228 219 205 / <alpha-value>)',
+          ink: 'rgb(31 26 27 / <alpha-value>)',
+          muted: 'rgb(74 61 58 / <alpha-value>)',
+          accent: 'rgb(122 58 73 / <alpha-value>)',
+        },
         /** Image scrims and modal backdrops — dark in both themes. */
         scrim: 'rgb(var(--scrim-rgb) / <alpha-value>)',
         foreground: 'rgb(var(--ink-rgb) / <alpha-value>)',

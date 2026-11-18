@@ -140,6 +140,9 @@ export default async function ProductPage({ params: { locale, slug } }: Params) 
         <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)] lg:self-start">
           {category && <p className="t-label mb-3">{category}</p>}
           <h1 className="t-h1">{name}</h1>
+          {description && (
+            <p className="t-body text-ink-secondary whitespace-pre-line mt-3">{description}</p>
+          )}
           <Price value={product.price} compareAt={product.compare_at_price} size="lg" className="mt-4" />
 
           <DeliveryInfo availability={product.availability} className="mt-5" />
@@ -147,12 +150,6 @@ export default async function ProductPage({ params: { locale, slug } }: Params) 
           <div className="mt-7 pt-7 border-t border-line">
             <ProductActions product={product} productUrl={`${SITE_URL}${url}`} />
           </div>
-
-          {description && (
-            <div className="mt-8 pt-7 border-t border-line">
-              <p className="t-body whitespace-pre-line">{description}</p>
-            </div>
-          )}
 
           <ul className="mt-8 pt-7 border-t border-line grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
             {trust.map((item) => {

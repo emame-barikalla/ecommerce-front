@@ -11,6 +11,7 @@ import { cartProductName, type CartIssue, type CartItem } from '@/lib/hooks/useC
 import { LOCAL_DELIVERY_DAYS, deliverySource, spainDeliveryDays } from '@/lib/store/delivery';
 import type { Locale } from '@/lib/types/database';
 import { cn } from '@/lib/utils/cn';
+import { sizeValues } from '@/lib/utils/size';
 import Drawer from './ui/Drawer';
 import EmptyState from './ui/EmptyState';
 import QuantityStepper from './ui/QuantityStepper';
@@ -218,7 +219,12 @@ export function CartLine({ item, issue, locale, onNavigate, onRemove, onQuantity
           {product.size && (
             <>
               {' · '}
-              <bdi dir="ltr">{product.size}</bdi>
+              {sizeValues(product.size).map((s, i) => (
+                <span key={s}>
+                  {i > 0 && ', '}
+                  <bdi dir="ltr">{s}</bdi>
+                </span>
+              ))}
             </>
           )}
         </p>
