@@ -146,7 +146,7 @@ export default async function HomePage({ params: { locale } }: Params) {
         <div className="relative overflow-hidden rounded-lg bg-surface-inverse">
           <div className="grid md:grid-cols-2 items-stretch">
             <div className="relative min-h-[15rem] md:min-h-[24rem] order-first md:order-last">
-              <Image src="/assets/brand/promo.jpg" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+              <Image src="/assets/brand/promo1.jpg" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
             </div>
             <div className="flex flex-col justify-center p-7 md:p-14 lg:p-16">
               <p className="t-label !text-white/70 mb-4">{t('promo.badge')}</p>

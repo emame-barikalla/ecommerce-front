@@ -96,10 +96,11 @@ export default function ProductActions({
         {sizes.length > 0 && (
           <div>
             <p className="t-label mb-2.5">{t(sizeKind(sizes[0]) === 'volume' ? 'volume' : 'size')}</p>
-            <ul className="flex flex-wrap gap-2" dir="ltr">
+            <ul className="flex flex-wrap gap-2">
               {sizes.map((s) => (
                 <li
                   key={s}
+                  dir="ltr"
                   className="inline-flex items-center justify-center min-w-[3rem] h-10 px-3.5 rounded-md border border-line-strong bg-surface text-sm font-medium text-ink tabular"
                 >
                   {s}

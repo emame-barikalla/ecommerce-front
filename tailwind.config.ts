@@ -50,7 +50,8 @@ const config: Config = {
          * fixed colours sampled from the photo rather than theme tokens.
          */
         hero: {
-          tint: 'rgb(222 205 184 / <alpha-value>)',
+          // Sampled from the cream wall/floor of the still-life hero photos.
+          tint: 'rgb(228 219 205 / <alpha-value>)',
           ink: 'rgb(31 26 27 / <alpha-value>)',
           muted: 'rgb(74 61 58 / <alpha-value>)',
           accent: 'rgb(122 58 73 / <alpha-value>)',

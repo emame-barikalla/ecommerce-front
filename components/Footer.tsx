@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { Facebook, Instagram, Mail, MapPin, MessageCircle } from 'lucide-react';
-import { getCategoriesServer, getStoreSettings } from '@/lib/utils/supabase-server';
+import { getStoreSettings } from '@/lib/utils/supabase-server';
 import { buildWhatsAppUrl } from '@/lib/utils/whatsapp';
-import { categoryName } from '@/lib/i18n/localize';
-import type { Locale } from '@/lib/types/database';
 import { LOCALE_OPTIONS } from '@/lib/config';
 
 function TikTokIcon({ size = 15 }: { size?: number }) {
@@ -16,11 +14,9 @@ function TikTokIcon({ size = 15 }: { size?: number }) {
 }
 
 export default async function Footer({ locale }: { locale: string }) {
-  const lang = locale as Locale;
-  const [t, nav, categories, settings] = await Promise.all([
+  const [t, nav, settings] = await Promise.all([
     getTranslations('footer'),
     getTranslations('nav'),
-    getCategoriesServer(),
     getStoreSettings(),
   ]);
 
@@ -95,27 +91,7 @@ export default async function Footer({ locale }: { locale: string }) {
             )}
           </div>
 
-          <nav aria-labelledby="footer-shop" className="lg:col-span-3 lg:col-start-6">
-            <h2 id="footer-shop" className="t-label mb-4">
-              {nav('catalog')}
-            </h2>
-            <ul className="space-y-1 text-small">
-              <li>
-                <Link href={`/${locale}/catalog`} className={`${linkClass} inline-block py-1.5`}>
-                  {t('allProducts')}
-                </Link>
-              </li>
-              {categories.map((cat) => (
-                <li key={cat.id}>
-                  <Link href={`/${locale}/catalog?category=${cat.slug}`} className={`${linkClass} inline-block py-1.5`}>
-                    {categoryName(cat, lang)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-labelledby="footer-help" className="lg:col-span-2">
+          <nav aria-labelledby="footer-help" className="lg:col-span-2 lg:col-start-9">
             <h2 id="footer-help" className="t-label mb-4">
               {t('help')}
             </h2>

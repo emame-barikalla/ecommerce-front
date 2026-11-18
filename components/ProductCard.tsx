@@ -16,7 +16,7 @@ import Price, { discountPercent } from './ui/Price';
 import DeliveryInfo from './DeliveryInfo';
 import { cn } from '@/lib/utils/cn';
 
-const NEW_FOR_DAYS = 30;
+const NEW_FOR_DAYS = 15;
 
 interface ProductCardProps {
   product: ProductWithDetails;
@@ -163,9 +163,16 @@ export default function ProductCard({
         {sizeList.length > 0 && (
           <p className="text-caption text-ink-tertiary">
             {t(sizeKind(sizeList[0]) === 'volume' ? 'volume' : 'size')}:{' '}
-            <bdi dir="ltr" className="text-ink-secondary font-medium">
-              {sizeList.join(' · ')}
-            </bdi>
+            {/* The list follows the page direction (right-to-left on /ar);
+                each value stays LTR so "50 ML" never reads as "ML 50". */}
+            <span className="text-ink-secondary font-medium">
+              {sizeList.map((s, i) => (
+                <span key={s}>
+                  {i > 0 && ' · '}
+                  <bdi dir="ltr">{s}</bdi>
+                </span>
+              ))}
+            </span>
           </p>
         )}
         <Price value={product.price} compareAt={product.compare_at_price} size="sm" className="mt-0.5" />
