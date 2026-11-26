@@ -7,9 +7,11 @@ import { localizedAlternates } from '@/lib/seo';
 import { buttonStyles } from '@/components/ui/Button';
 import ContactForm from './ContactForm';
 
-type Params = { params: { locale: string } };
+type Params = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata({ params: { locale } }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const { locale } = await props.params;
+
   const t = await getTranslations({ locale, namespace: 'contact' });
   return {
     title: t('title'),
@@ -18,7 +20,9 @@ export async function generateMetadata({ params: { locale } }: Params): Promise<
   };
 }
 
-export default async function ContactPage({ params: { locale } }: Params) {
+export default async function ContactPage(props: Params) {
+  const { locale } = await props.params;
+
   setRequestLocale(locale);
   const [t, tWhatsApp, settings] = await Promise.all([
     getTranslations('contact'),

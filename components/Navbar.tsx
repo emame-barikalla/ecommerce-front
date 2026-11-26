@@ -99,7 +99,7 @@ export default function Navbar({
               render={(params) =>
                 buildLinks(params).map((link) => (
                   <li key={link.key}>
-                    <NavLink {...link} />
+                    <NavLink href={link.href} label={link.label} active={link.active} />
                   </li>
                 ))
               }
@@ -150,7 +150,7 @@ export default function Navbar({
   );
 }
 
-function NavLink({ href, label, active }: NavLinkItem) {
+function NavLink({ href, label, active }: Omit<NavLinkItem, 'key'>) {
   return (
     <Link
       href={href}

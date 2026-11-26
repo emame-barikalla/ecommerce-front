@@ -10,14 +10,14 @@ A production-ready, single-store e-commerce web application with a simple admin 
 - 📱 **WhatsApp Integration** - Direct contact and order placement
 - 🔐 **Admin CMS** - Secure admin panel for product/category management
 - 🖼️ **Image Management** - Upload and manage product images
-- ⚡ **Fast & SEO-Friendly** - Next.js 14 with App Router
+- ⚡ **Fast & SEO-Friendly** - Next.js 16 with App Router
 - 🔒 **Secure** - Row Level Security (RLS) with Supabase
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20.9+ (22 recommended)
 - Supabase account (free tier works)
 
 ### Installation
@@ -70,7 +70,7 @@ A production-ready, single-store e-commerce web application with a simple admin 
 
 ## 🎯 Tech Stack
 
-- **Frontend**: Next.js 14 (App Router), React, TypeScript
+- **Frontend**: Next.js 16 (App Router), React, TypeScript
 - **Styling**: Tailwind CSS
 - **Backend**: Supabase (PostgreSQL, Auth, Storage)
 - **i18n**: next-intl
@@ -112,12 +112,9 @@ Translations are stored in the database and can be managed via the admin panel.
 
 ## 🚀 Deployment
 
-### Frontend (Vercel Recommended)
+### Frontend (Railway, or a VPS, with Docker)
 
-1. Push to GitHub
-2. Import to Vercel
-3. Add environment variables
-4. Deploy
+See [DEPLOYMENT.md](./DEPLOYMENT.md).
 
 ### Database
 

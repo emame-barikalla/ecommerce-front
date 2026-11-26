@@ -15,7 +15,7 @@ const intlMiddleware = createIntlMiddleware({
  * Real auth gate for /admin. The previous implementation relied on the
  * `x-invoke-pathname` header (which Next.js never sets), so its redirect
  * block was skipped and the admin UI rendered for everyone. Enforcement now
- * lives here in middleware, and we also refresh the Supabase session cookie
+ * lives here in the proxy (formerly middleware), and we also refresh the Supabase session cookie
  * (which the old matcher excluded from /admin entirely).
  */
 async function handleAdmin(request: NextRequest) {
@@ -80,7 +80,7 @@ async function handleAdmin(request: NextRequest) {
   return response;
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/admin')) {
     return handleAdmin(request);
   }

@@ -26,9 +26,11 @@ import DepartmentTiles from '@/components/sections/DepartmentTiles';
 import Hero, { HERO_IMAGE } from '@/components/sections/Hero';
 import { CATEGORY_IMAGES, FALLBACK_CATEGORY_IMAGE } from '@/lib/store/category-images';
 
-type Params = { params: { locale: string } };
+type Params = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata({ params: { locale } }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const { locale } = await props.params;
+
   const t = await getTranslations({ locale, namespace: 'home' });
   return {
     // The layout template would append the store name to itself; use it as-is.
@@ -41,7 +43,9 @@ export async function generateMetadata({ params: { locale } }: Params): Promise<
 
 const GRID = 'grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-14';
 
-export default async function HomePage({ params: { locale } }: Params) {
+export default async function HomePage(props: Params) {
+  const { locale } = await props.params;
+
   setRequestLocale(locale);
   const lang = locale as Locale;
 

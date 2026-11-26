@@ -4,7 +4,9 @@ import { localizedAlternates } from '@/lib/seo';
 
 // The catalog page is a client component (filters live in the URL and are
 // applied in the browser), so its metadata is provided here.
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await props.params;
+
   const t = await getTranslations({ locale, namespace: 'catalog' });
   return {
     title: t('title'),

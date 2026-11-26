@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 // The admin is its own root layout (the storefront's lives in app/[locale]),
 // so each can stamp the correct `lang`/`dir` on <html> server-side.
-// Access control lives in middleware.ts (session + admin-role check); this
+// Access control lives in proxy.ts (session + admin-role check); this
 // layout only picks between the bare login screen and the full shell, using
-// the `x-pathname` header the middleware sets.
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const pathname = headers().get('x-pathname') || '';
+// the `x-pathname` header the proxy sets.
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const pathname = (await headers()).get('x-pathname') || '';
   const isLogin = pathname.startsWith('/admin/login');
 
   return (

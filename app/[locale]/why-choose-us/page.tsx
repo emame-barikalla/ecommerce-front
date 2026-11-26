@@ -8,9 +8,11 @@ import TrustStrip from '@/components/sections/TrustStrip';
 import StoreStats from '@/components/sections/StoreStats';
 import { localizedAlternates } from '@/lib/seo';
 
-type Params = { params: { locale: string } };
+type Params = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata({ params: { locale } }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const { locale } = await props.params;
+
   const t = await getTranslations({ locale, namespace: 'whyChooseUs' });
   const tNav = await getTranslations({ locale, namespace: 'nav' });
   return {
@@ -27,7 +29,9 @@ const FEATURES = [
 
 const STEPS = ['browse', 'contact', 'confirm', 'receive'] as const;
 
-export default async function WhyChooseUsPage({ params: { locale } }: Params) {
+export default async function WhyChooseUsPage(props: Params) {
+  const { locale } = await props.params;
+
   setRequestLocale(locale);
   const [t, tNav] = await Promise.all([getTranslations('whyChooseUs'), getTranslations('nav')]);
 

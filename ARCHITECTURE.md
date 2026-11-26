@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a production-ready, single-store e-commerce CMS built with Next.js 14 (App Router) and Supabase. The system is designed to be **future-ready for multi-store expansion** without requiring refactoring.
+This is a production-ready, single-store e-commerce CMS built with Next.js 16 (App Router) and Supabase. The system is designed to be **future-ready for multi-store expansion** without requiring refactoring.
 
 ## 🎯 Core Features
 
@@ -216,7 +216,7 @@ The schema is designed for easy multi-store expansion:
 1. **Database**: Upgrade Supabase plan
 2. **Storage**: Use CDN for images
 3. **Caching**: Add Redis for frequently accessed data
-4. **CDN**: Vercel Edge Network (automatic)
+4. **CDN**: Cloudflare
 
 ## 🔧 Development Workflow
 
@@ -231,7 +231,7 @@ The schema is designed for easy multi-store expansion:
    - Or use Supabase CLI for migrations
 
 3. **Deployment**:
-   - Frontend: Vercel/Netlify
+   - Frontend: see [DEPLOYMENT.md](./DEPLOYMENT.md)
    - Database: Already on Supabase
    - Environment: Set env vars in hosting platform
 

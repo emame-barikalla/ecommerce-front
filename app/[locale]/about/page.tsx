@@ -8,9 +8,11 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import { getStoreSettings } from '@/lib/utils/supabase-server';
 import { localizedAlternates } from '@/lib/seo';
 
-type Params = { params: { locale: string } };
+type Params = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata({ params: { locale } }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const { locale } = await props.params;
+
   const t = await getTranslations({ locale, namespace: 'about' });
   return {
     title: t('title'),
@@ -22,7 +24,9 @@ export async function generateMetadata({ params: { locale } }: Params): Promise<
 const VALUE_KEYS = ['mission', 'values', 'promise'] as const;
 const HIGHLIGHT_KEYS = ['sourcing', 'shipping', 'support', 'authentic'] as const;
 
-export default async function AboutPage({ params: { locale } }: Params) {
+export default async function AboutPage(props: Params) {
+  const { locale } = await props.params;
+
   setRequestLocale(locale);
   const [t, settings] = await Promise.all([getTranslations('about'), getStoreSettings()]);
   // The authenticity guarantee is a commitment — listed only once it is set.

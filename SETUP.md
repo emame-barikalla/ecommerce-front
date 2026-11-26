@@ -4,7 +4,7 @@ This guide will help you set up the complete e-commerce system with Supabase bac
 
 ## 📋 Prerequisites
 
-- Node.js 18+ installed
+- Node.js 20.9+ (22 recommended) installed
 - A Supabase account (free tier works)
 - Git (optional)
 
@@ -161,7 +161,7 @@ Visit:
 1. **Customize Design**: Update Tailwind classes in components
 2. **Add More Features**: Orders, payments, etc.
 3. **Deploy**: 
-   - Frontend: Vercel/Netlify
+   - Frontend: see [DEPLOYMENT.md](./DEPLOYMENT.md)
    - Database: Already on Supabase
 4. **SEO**: Update meta tags, add sitemap
 5. **Analytics**: Add Google Analytics or similar

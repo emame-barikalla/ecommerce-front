@@ -1,0 +1,54 @@
+name: Database backup
+
+# Nightly encrypted Supabase backup, kept 14 days as a workflow artifact.
+# Secrets: DATABASE_URL (Supabase → Connect → Session pooler) and
+# BACKUP_PASSPHRASE (keep a copy in your password manager: without it the
+# backups cannot be opened). Restore steps are in DEPLOYMENT.md.
+
+on:
+  schedule:
+    - cron: '15 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: db-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+    steps:
+      - name: Check secrets
+        run: |
+          test -n "$DATABASE_URL" || { echo "::error::DATABASE_URL secret is missing"; exit 1; }
+          test -n "$BACKUP_PASSPHRASE" || { echo "::error::BACKUP_PASSPHRASE secret is missing"; exit 1; }
+
+      - name: Dump database
+        run: |
+          set -euo pipefail
+          umask 077
+          docker run --rm -e DATABASE_URL postgres:17-alpine \
+            sh -c 'pg_dump "$DATABASE_URL" -Fc --no-owner -n public -n auth' > db.dump
+          test -s db.dump
+          ls -lh db.dump
+
+      - name: Encrypt
+        run: |
+          set -euo pipefail
+          printf '%s' "$BACKUP_PASSPHRASE" | gpg --batch --yes --pinentry-mode loopback \
+            --passphrase-fd 0 --symmetric --cipher-algo AES256 -o db.dump.gpg db.dump
+          rm db.dump
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: db-backup-${{ github.run_id }}
+          path: db.dump.gpg
+          retention-days: 14
+          if-no-files-found: error

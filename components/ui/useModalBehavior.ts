@@ -14,8 +14,8 @@ const FOCUSABLE =
 export function useModalBehavior(
   open: boolean,
   onClose: () => void,
-  panelRef: RefObject<HTMLElement>,
-  initialFocusRef?: RefObject<HTMLElement>
+  panelRef: RefObject<HTMLElement | null>,
+  initialFocusRef?: RefObject<HTMLElement | null>
 ) {
   // Read through a ref so a new `onClose` identity each render does not
   // re-run the effect (which would steal focus back to the close button).

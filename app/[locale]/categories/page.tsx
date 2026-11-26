@@ -10,15 +10,19 @@ import { CATEGORY_IMAGES, FALLBACK_CATEGORY_IMAGE } from '@/lib/store/category-i
 import type { Locale } from '@/lib/types/database';
 import DepartmentTiles from '@/components/sections/DepartmentTiles';
 
-type Params = { params: { locale: string } };
+type Params = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata({ params: { locale } }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const { locale } = await props.params;
+
   const t = await getTranslations({ locale, namespace: 'nav' });
   return { title: t('categories'), alternates: localizedAlternates(locale, '/categories') };
 }
 
 /** The bottom navigation's "Categories" tab: departments first, then categories. */
-export default async function CategoriesPage({ params: { locale } }: Params) {
+export default async function CategoriesPage(props: Params) {
+  const { locale } = await props.params;
+
   setRequestLocale(locale);
   const lang = locale as Locale;
   const [t, tNav, categories] = await Promise.all([

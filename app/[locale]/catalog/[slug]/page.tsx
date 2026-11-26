@@ -23,7 +23,7 @@ import ProductActions from './ProductActions';
 import ProductGallery from './ProductGallery';
 import ProductViewTracker from './ProductViewTracker';
 
-type Params = { params: { locale: string; slug: string } };
+type Params = { params: Promise<{ locale: string; slug: string }> };
 
 /**
  * Current products are prerendered at build; products added later render on
@@ -34,7 +34,9 @@ export async function generateStaticParams({ params: { locale } }: { params: { l
   return products.map((p) => ({ locale, slug: p.slug }));
 }
 
-export async function generateMetadata({ params: { locale, slug } }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const { locale, slug } = await props.params;
+
   const product = await getProductServer(slug);
   if (!product) return {};
 
@@ -67,7 +69,9 @@ const TRUST_ICONS: Record<TrustKey, LucideIcon> = {
   authentic: ShieldCheck,
 };
 
-export default async function ProductPage({ params: { locale, slug } }: Params) {
+export default async function ProductPage(props: Params) {
+  const { locale, slug } = await props.params;
+
   setRequestLocale(locale);
   const lang = locale as Locale;
 
